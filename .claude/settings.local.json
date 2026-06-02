@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -rf \"/Users/amber/Local Sites/Happs Pottery Wireframes/happs-pottery-wireframes/.git\")",
+      "Bash(git add *)"
+    ]
+  }
+}

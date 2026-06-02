@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happs Pottery — [PAGE NAME] Wireframe</title>
+<style>
+  /* ── Reset & base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f5f5f5;
+    color: #1a1a1a;
+    font-size: 14px;
+    min-height: 100vh;
+  }
+
+  /* ── Wireframe toolbar ── */
+  #wf-toolbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 44px;
+    background: #1a1a1a;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    z-index: 9000;
+    font-size: 12px;
+    user-select: none;
+  }
+  #wf-toolbar .wf-title { font-weight: 600; opacity: 0.9; flex: 1; }
+  #wf-toolbar .wf-meta { opacity: 0.45; font-size: 11px; }
+  #wf-mode-toggle {
+    background: #fff;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: background 0.15s;
+  }
+  #wf-mode-toggle:hover { background: #e0e0e0; }
+  #wf-mode-toggle.active { background: #f5a623; color: #1a1a1a; }
+  #wf-export-btn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  #wf-export-btn:hover { border-color: rgba(255,255,255,0.7); }
+  #wf-comment-count {
+    background: #f5a623;
+    color: #1a1a1a;
+    border-radius: 10px;
+    padding: 1px 7px;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+    display: none;
+  }
+
+  /* ── Page content wrapper ── */
+  #wf-page {
+    margin-top: 44px;
+    position: relative;
+  }
+
+  /* ── Comment mode cursor ── */
+  body.comment-mode #wf-page { cursor: crosshair; }
+  body.comment-mode #wf-mode-toggle { background: #f5a623; }
+
+  /* ── Comment pins ── */
+  .wf-pin {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: #f5a623;
+    border: 2px solid #1a1a1a;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    cursor: pointer;
+    z-index: 8000;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .wf-pin:hover { transform: rotate(-45deg) scale(1.15); box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+  .wf-pin .pin-num {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: rotate(45deg) translate(-50%, -50%);
+    font-size: 10px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1;
+    margin-top: -1px;
+  }
+
+  /* ── Comment bubble ── */
+  .wf-bubble {
+    position: absolute;
+    background: #fff;
+    border: 1.5px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 10px 12px;
+    width: 220px;
+    z-index: 8500;
+    box-shadow: 3px 3px 0 #1a1a1a;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    display: none;
+  }
+  .wf-bubble.visible { display: block; }
+  .wf-bubble .bubble-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .wf-bubble .bubble-num {
+    font-weight: 700;
+    font-size: 11px;
+    color: #888;
+  }
+  .wf-bubble .bubble-close {
+    cursor: pointer;
+    font-size: 14px;
+    color: #888;
+    line-height: 1;
+    padding: 0 2px;
+  }
+  .wf-bubble .bubble-close:hover { color: #1a1a1a; }
+  .wf-bubble .bubble-text { color: #333; }
+  .wf-bubble .bubble-delete {
+    margin-top: 8px;
+    font-size: 10px;
+    color: #bbb;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .wf-bubble .bubble-delete:hover { color: #c00; }
+
+  /* ── Comment input popup ── */
+  #wf-input-popup {
+    position: absolute;
+    background: #fff;
+    border: 1.5px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 12px;
+    width: 240px;
+    z-index: 9500;
+    box-shadow: 3px 3px 0 #1a1a1a;
+    display: none;
+  }
+  #wf-input-popup.visible { display: block; }
+  #wf-input-popup label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+    display: block;
+    margin-bottom: 6px;
+  }
+  #wf-input-name {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 12px;
+    margin-bottom: 8px;
+    font-family: inherit;
+  }
+  #wf-input-text {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 12px;
+    resize: vertical;
+    min-height: 72px;
+    font-family: inherit;
+  }
+  #wf-input-name:focus, #wf-input-text:focus {
+    outline: none;
+    border-color: #1a1a1a;
+  }
+  .wf-input-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  #wf-input-save {
+    flex: 1;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #wf-input-save:hover { background: #333; }
+  #wf-input-cancel {
+    background: transparent;
+    color: #888;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 7px 10px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  #wf-input-cancel:hover { border-color: #888; color: #333; }
+
+  /* ── Export panel ── */
+  #wf-export-panel {
+    position: fixed;
+    top: 54px; right: 16px;
+    background: #fff;
+    border: 1.5px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 16px;
+    width: 320px;
+    z-index: 9000;
+    box-shadow: 3px 3px 0 #1a1a1a;
+    display: none;
+    font-size: 12px;
+  }
+  #wf-export-panel.visible { display: block; }
+  #wf-export-panel h3 { font-size: 13px; margin-bottom: 4px; }
+  #wf-export-panel p { color: #888; font-size: 11px; margin-bottom: 10px; }
+  #wf-export-text {
+    width: 100%;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 11px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    min-height: 120px;
+    resize: none;
+    line-height: 1.6;
+  }
+  #wf-copy-btn {
+    margin-top: 8px;
+    width: 100%;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #wf-copy-btn:hover { background: #333; }
+  #wf-export-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    cursor: pointer;
+    color: #888;
+    font-size: 16px;
+    line-height: 1;
+  }
+  #wf-export-close:hover { color: #1a1a1a; }
+
+  /* ── Hint toast ── */
+  #wf-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    z-index: 9000;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  #wf-hint.visible { opacity: 1; }
+
+  /* ═══════════════════════════════════════
+     WIREFRAME PAGE STYLES — lo-fi greyscale
+     Replace everything below this line
+     with the actual page wireframe content
+  ═══════════════════════════════════════ */
+
+  .wf-section {
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 48px 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .wf-section + .wf-section { border-top: none; }
+  .wf-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #bbb;
+    margin-bottom: 16px;
+  }
+  .wf-placeholder {
+    background: #f0f0f0;
+    border: 1.5px dashed #ccc;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 12px;
+    font-style: italic;
+  }
+  .wf-h1 { font-size: 36px; font-weight: 700; color: #1a1a1a; line-height: 1.2; margin-bottom: 12px; }
+  .wf-h2 { font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 10px; }
+  .wf-body { font-size: 14px; color: #555; line-height: 1.7; max-width: 560px; }
+  .wf-btn {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 4px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+  .wf-btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: #1a1a1a;
+    border: 1.5px solid #1a1a1a;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 12px;
+  }
+  .wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .wf-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .wf-card {
+    background: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 20px;
+  }
+  .wf-nav {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    padding: 14px 40px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #fff;
+  }
+  .wf-nav-logo { font-size: 15px; font-weight: 700; flex: 1; }
+  .wf-nav-link { font-size: 13px; color: #555; }
+  .wf-nav-cta { font-size: 13px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ── Wireframe toolbar ── -->
+<div id="wf-toolbar">
+  <span class="wf-title">Happs Pottery — [PAGE NAME] <span class="wf-meta">/ wireframe v1 · [DATE]</span></span>
+  <span id="wf-comment-count">0</span>
+  <button id="wf-mode-toggle" onclick="toggleCommentMode()">+ Add Comment</button>
+  <button id="wf-export-btn" onclick="toggleExport()">Export Comments</button>
+</div>
+
+<!-- ── Comment input popup ── -->
+<div id="wf-input-popup">
+  <label>Your name</label>
+  <input id="wf-input-name" type="text" placeholder="e.g. Myles" />
+  <label>Comment</label>
+  <textarea id="wf-input-text" placeholder="What do you think about this section?"></textarea>
+  <div class="wf-input-actions">
+    <button id="wf-input-cancel" onclick="cancelComment()">Cancel</button>
+    <button id="wf-input-save" onclick="saveComment()">Save</button>
+  </div>
+</div>
+
+<!-- ── Export panel ── -->
+<div id="wf-export-panel">
+  <span id="wf-export-close" onclick="toggleExport()">✕</span>
+  <h3>Export Comments</h3>
+  <p>Copy this and paste into Slack or email.</p>
+  <textarea id="wf-export-text" readonly></textarea>
+  <button id="wf-copy-btn" onclick="copyComments()">Copy to clipboard</button>
+</div>
+
+<!-- ── Hint toast ── -->
+<div id="wf-hint"></div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE WIREFRAME CONTENT STARTS HERE
+     Replace the demo sections below with actual page
+     sections for each wireframe.
+════════════════════════════════════════════════════ -->
+<div id="wf-page">
+
+  <!-- NAV -->
+  <div class="wf-nav">
+    <div class="wf-nav-logo">Happs Pottery</div>
+    <div class="wf-nav-link">Experiences</div>
+    <div class="wf-nav-link">Shop</div>
+    <div class="wf-nav-link">About</div>
+    <div class="wf-nav-link">Visit</div>
+    <div class="wf-nav-cta">Book →</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="wf-section">
+    <div class="wf-label">Section 1 — Hero</div>
+    <div class="wf-placeholder" style="height:320px;margin-bottom:24px;">[Hero image — Myles at wheel / hands in clay]</div>
+    <div class="wf-h1">[Page headline goes here]</div>
+    <div class="wf-body">[Supporting subheading — 1–2 sentences. Sets context and leads to CTA.]</div>
+    <div class="wf-btn">[Primary CTA →]</div>
+  </div>
+
+  <!-- CONTENT SECTION -->
+  <div class="wf-section">
+    <div class="wf-label">Section 2 — [Section name]</div>
+    <div class="wf-h2">[Section heading]</div>
+    <div class="wf-body">[Body copy or description. Replace with real content when drafting.]</div>
+    <div class="wf-grid-3" style="margin-top:24px;">
+      <div class="wf-card">
+        <div class="wf-placeholder" style="height:80px;margin-bottom:12px;">[Image]</div>
+        <div style="font-weight:600;font-size:13px;margin-bottom:6px;">[Card title]</div>
+        <div style="font-size:12px;color:#777;">[Card description — 2 lines]</div>
+      </div>
+      <div class="wf-card">
+        <div class="wf-placeholder" style="height:80px;margin-bottom:12px;">[Image]</div>
+        <div style="font-weight:600;font-size:13px;margin-bottom:6px;">[Card title]</div>
+        <div style="font-size:12px;color:#777;">[Card description — 2 lines]</div>
+      </div>
+      <div class="wf-card">
+        <div class="wf-placeholder" style="height:80px;margin-bottom:12px;">[Image]</div>
+        <div style="font-weight:600;font-size:13px;margin-bottom:6px;">[Card title]</div>
+        <div style="font-size:12px;color:#777;">[Card description — 2 lines]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <div class="wf-section">
+    <div class="wf-label">Section 3 — CTA / Enquiry</div>
+    <div class="wf-h2">[Section heading]</div>
+    <div class="wf-body">[Supporting copy. Drive to action.]</div>
+    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+      <div class="wf-btn">[Primary CTA →]</div>
+      <div class="wf-btn-outline">[Secondary CTA]</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="wf-section" style="background:#1a1a1a;color:#fff;">
+    <div class="wf-label" style="color:#555;">Footer</div>
+    <div class="wf-grid-3" style="margin-top:8px;">
+      <div>
+        <div style="font-weight:700;margin-bottom:8px;">Happs Pottery</div>
+        <div style="font-size:12px;color:#888;line-height:1.8;">749 Caves Road<br>Dunsborough WA</div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:#888;line-height:2;">[Nav links]</div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:#888;">[Social / newsletter signup]</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /wf-page -->
+
+
+<script>
+// ── State ──
+let commentMode = false;
+let comments = [];
+let pendingX = 0;
+let pendingY = 0;
+let activeBubble = null;
+const PAGE_ID = document.title.replace(/\s+/g, '-').toLowerCase();
+
+// ── Persist comments per page ──
+function loadComments() {
+  try {
+    const stored = localStorage.getItem('wf-comments-' + PAGE_ID);
+    if (stored) comments = JSON.parse(stored);
+  } catch(e) {}
+}
+function saveComments() {
+  try {
+    localStorage.setItem('wf-comments-' + PAGE_ID, JSON.stringify(comments));
+  } catch(e) {}
+}
+
+// ── Comment mode toggle ──
+function toggleCommentMode() {
+  commentMode = !commentMode;
+  document.body.classList.toggle('comment-mode', commentMode);
+  const btn = document.getElementById('wf-mode-toggle');
+  btn.classList.toggle('active', commentMode);
+  btn.textContent = commentMode ? '✕ Cancel' : '+ Add Comment';
+  showHint(commentMode ? 'Click anywhere on the page to leave a comment' : '');
+}
+
+// ── Page click → place pin ──
+document.getElementById('wf-page').addEventListener('click', function(e) {
+  if (!commentMode) return;
+  if (e.target.closest('.wf-pin') || e.target.closest('#wf-input-popup')) return;
+  closeInputPopup();
+  const rect = this.getBoundingClientRect();
+  const scrollY = window.scrollY;
+  pendingX = e.clientX - rect.left;
+  pendingY = e.clientY - rect.top + scrollY;
+  showInputPopup(e.clientX, e.clientY + scrollY);
+});
+
+// ── Input popup ──
+function showInputPopup(x, y) {
+  const popup = document.getElementById('wf-input-popup');
+  const toolbar = 44;
+  popup.style.left = Math.min(x, window.innerWidth - 260) + 'px';
+  popup.style.top = (y - toolbar + 8) + 'px';
+  popup.classList.add('visible');
+  document.getElementById('wf-input-text').focus();
+}
+function closeInputPopup() {
+  document.getElementById('wf-input-popup').classList.remove('visible');
+  document.getElementById('wf-input-text').value = '';
+}
+function cancelComment() {
+  closeInputPopup();
+}
+function saveComment() {
+  const text = document.getElementById('wf-input-text').value.trim();
+  const name = document.getElementById('wf-input-name').value.trim() || 'Anonymous';
+  if (!text) { document.getElementById('wf-input-text').focus(); return; }
+  const comment = {
+    id: Date.now(),
+    x: pendingX,
+    y: pendingY,
+    text,
+    name,
+    num: comments.length + 1
+  };
+  comments.push(comment);
+  saveComments();
+  renderPin(comment);
+  updateCount();
+  closeInputPopup();
+  toggleCommentMode();
+  showHint('Comment #' + comment.num + ' saved');
+}
+
+// ── Render a pin ──
+function renderPin(c) {
+  const page = document.getElementById('wf-page');
+  const pin = document.createElement('div');
+  pin.className = 'wf-pin';
+  pin.dataset.id = c.id;
+  pin.style.left = (c.x - 14) + 'px';
+  pin.style.top = (c.y - 28) + 'px';
+  pin.innerHTML = `<span class="pin-num">${c.num}</span>`;
+  pin.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleBubble(c, pin);
+  });
+
+  // Bubble
+  const bubble = document.createElement('div');
+  bubble.className = 'wf-bubble';
+  bubble.dataset.id = c.id;
+  bubble.style.left = (c.x + 16) + 'px';
+  bubble.style.top = (c.y - 28) + 'px';
+  bubble.innerHTML = `
+    <div class="bubble-header">
+      <span class="bubble-num">#${c.num} · ${c.name}</span>
+      <span class="bubble-close" onclick="closeBubble(${c.id})">✕</span>
+    </div>
+    <div class="bubble-text">${escHtml(c.text)}</div>
+    <div class="bubble-delete" onclick="deleteComment(${c.id})">Delete comment</div>
+  `;
+  page.appendChild(pin);
+  page.appendChild(bubble);
+}
+
+function toggleBubble(c, pin) {
+  const bubble = document.querySelector(`.wf-bubble[data-id="${c.id}"]`);
+  if (!bubble) return;
+  if (activeBubble && activeBubble !== bubble) activeBubble.classList.remove('visible');
+  bubble.classList.toggle('visible');
+  activeBubble = bubble.classList.contains('visible') ? bubble : null;
+}
+function closeBubble(id) {
+  const bubble = document.querySelector(`.wf-bubble[data-id="${id}"]`);
+  if (bubble) bubble.classList.remove('visible');
+  activeBubble = null;
+}
+function deleteComment(id) {
+  comments = comments.filter(c => c.id !== id);
+  // renumber
+  comments.forEach((c, i) => c.num = i + 1);
+  saveComments();
+  document.querySelector(`.wf-pin[data-id="${id}"]`)?.remove();
+  document.querySelector(`.wf-bubble[data-id="${id}"]`)?.remove();
+  // re-render all to fix numbers
+  document.querySelectorAll('.wf-pin,.wf-bubble').forEach(el => el.remove());
+  comments.forEach(renderPin);
+  updateCount();
+}
+
+// ── Export ──
+function toggleExport() {
+  const panel = document.getElementById('wf-export-panel');
+  panel.classList.toggle('visible');
+  if (panel.classList.contains('visible')) {
+    buildExportText();
+  }
+}
+function buildExportText() {
+  const page = document.title;
+  const date = new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+  let text = `${page} — Wireframe Feedback\n${date}\n${'─'.repeat(40)}\n\n`;
+  if (comments.length === 0) {
+    text += '(No comments yet)';
+  } else {
+    comments.forEach(c => {
+      text += `#${c.num} — ${c.name}\n${c.text}\n\n`;
+    });
+  }
+  document.getElementById('wf-export-text').value = text.trim();
+}
+function copyComments() {
+  const ta = document.getElementById('wf-export-text');
+  ta.select();
+  document.execCommand('copy');
+  const btn = document.getElementById('wf-copy-btn');
+  btn.textContent = 'Copied ✓';
+  setTimeout(() => btn.textContent = 'Copy to clipboard', 2000);
+}
+
+// ── Helpers ──
+function updateCount() {
+  const el = document.getElementById('wf-comment-count');
+  el.textContent = comments.length;
+  el.style.display = comments.length > 0 ? 'inline-block' : 'none';
+}
+function showHint(msg) {
+  const hint = document.getElementById('wf-hint');
+  hint.textContent = msg;
+  hint.classList.toggle('visible', !!msg);
+  if (msg) setTimeout(() => hint.classList.remove('visible'), 3000);
+}
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Close bubble on outside click ──
+document.addEventListener('click', (e) => {
+  if (activeBubble && !e.target.closest('.wf-bubble') && !e.target.closest('.wf-pin')) {
+    activeBubble.classList.remove('visible');
+    activeBubble = null;
+  }
+});
+
+// ── Init ──
+loadComments();
+comments.forEach(renderPin);
+updateCount();
+</script>
+</body>
+</html>
