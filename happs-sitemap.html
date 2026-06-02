@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happs Pottery — Site Map v2</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #faf9f7; color: #1a1a1a; font-size: 14px; padding: 32px; min-height: 100vh; }
+  header { margin-bottom: 32px; }
+  header h1 { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 4px; }
+  header p { font-size: 12px; color: #888; }
+  .legend { display: flex; gap: 20px; margin-bottom: 36px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #555; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .dot-exists { background: #4caf7d; }
+  .dot-new { background: #f28b72; }
+  .dot-priority { background: #f5a623; }
+  .dot-future { background: #b0b0b0; }
+  .dot-utility { background: #7eb8f7; }
+  .dot-legal { background: #c9a7eb; }
+  .tier { margin-bottom: 32px; }
+  .tier-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #999; margin-bottom: 10px; }
+  .cards { display: flex; flex-wrap: wrap; gap: 8px; }
+  .card { background: #fff; border: 1.5px solid #e8e4df; border-radius: 8px; padding: 12px 14px; min-width: 140px; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s; }
+  .card:hover { border-color: #c8b9a8; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  .card.selected { border-color: #8B4513; box-shadow: 0 0 0 3px rgba(139,69,19,0.12); }
+  .card-name { font-size: 13px; font-weight: 600; margin-bottom: 3px; line-height: 1.3; }
+  .card-slug { font-size: 11px; color: #aaa; font-family: 'SF Mono', 'Fira Code', monospace; margin-bottom: 8px; }
+  .badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 20px; letter-spacing: 0.02em; }
+  .badge-exists { background: #e8f5ee; color: #2e7d52; }
+  .badge-new { background: #fdeae5; color: #c0442a; }
+  .badge-priority { background: #fef3e0; color: #a0620a; }
+  .badge-future { background: #f0f0f0; color: #777; }
+  .badge-utility { background: #e5f0fd; color: #2c6db0; }
+  .badge-legal { background: #f3edfb; color: #7b3fa8; }
+  #detail-panel { background: #fff; border: 1.5px solid #e8e4df; border-radius: 10px; padding: 20px 24px; margin-top: 8px; min-height: 80px; transition: opacity 0.2s; }
+  #detail-panel.empty { display: flex; align-items: center; justify-content: center; color: #bbb; font-style: italic; font-size: 13px; }
+  .detail-title { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+  .detail-slug { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 11px; color: #aaa; margin-bottom: 12px; }
+  .detail-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .detail-block h4 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #999; margin-bottom: 4px; }
+  .detail-block p, .detail-block ul { font-size: 12px; color: #444; line-height: 1.6; }
+  .detail-block ul { padding-left: 14px; }
+
+  /* Sub-tier indent for collections */
+  .sub-tier { margin-top: 6px; margin-left: 16px; padding-left: 14px; border-left: 2px solid #ece8e3; }
+  .sub-tier-label { font-size: 10px; color: #bbb; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+
+  .divider { border: none; border-top: 1px solid #ece8e3; margin: 24px 0; }
+  @media print { body { background: white; padding: 20px; } #detail-panel { display: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Happs Pottery — Site Map v2</h1>
+  <p>Wireframe planning document · June 2026 · Click any page card to see notes</p>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><div class="dot dot-exists"></div> Exists in some form</div>
+  <div class="legend-item"><div class="dot dot-new"></div> New page needed</div>
+  <div class="legend-item"><div class="dot dot-priority"></div> Priority — Myles asked for it</div>
+  <div class="legend-item"><div class="dot dot-future"></div> Future / TBC</div>
+  <div class="legend-item"><div class="dot dot-utility"></div> Utility / ecommerce</div>
+  <div class="legend-item"><div class="dot dot-legal"></div> Legal &amp; policy</div>
+</div>
+
+<!-- PRIMARY NAV -->
+<div class="tier">
+  <div class="tier-label">Primary Navigation</div>
+  <div class="cards">
+    <div class="card" onclick="show('home', this)"><div class="card-name">Home</div><div class="card-slug">/home</div><span class="badge badge-exists">Exists</span></div>
+    <div class="card" onclick="show('experiences', this)"><div class="card-name">Experiences</div><div class="card-slug">/experiences</div><span class="badge badge-exists">Exists</span></div>
+    <div class="card" onclick="show('shop', this)"><div class="card-name">Shop</div><div class="card-slug">/shop</div><span class="badge badge-exists">Exists</span></div>
+    <div class="card" onclick="show('what-we-do', this)"><div class="card-name">What We Do</div><div class="card-slug">/what-we-do</div><span class="badge badge-new">New</span></div>
+    <div class="card" onclick="show('about', this)"><div class="card-name">About</div><div class="card-slug">/about</div><span class="badge badge-priority">Priority</span></div>
+    <div class="card" onclick="show('visit', this)"><div class="card-name">Visit</div><div class="card-slug">/visit</div><span class="badge badge-new">New</span></div>
+    <div class="card" onclick="show('contact', this)"><div class="card-name">Contact</div><div class="card-slug">/contact</div><span class="badge badge-new">New</span></div>
+  </div>
+</div>
+
+<!-- SEGMENT LANDING PAGES -->
+<div class="tier">
+  <div class="tier-label">Segment Landing Pages — off-nav, traffic from ads / QR / Google</div>
+  <div class="cards">
+    <div class="card" onclick="show('schools', this)"><div class="card-name">Schools &amp; Groups</div><div class="card-slug">/schools</div><span class="badge badge-priority">Priority</span></div>
+    <div class="card" onclick="show('corporate', this)"><div class="card-name">Corporate Gifts</div><div class="card-slug">/corporate</div><span class="badge badge-priority">Priority</span></div>
+    <div class="card" onclick="show('open-studios', this)"><div class="card-name">Open Studios 2026</div><div class="card-slug">/open-studios</div><span class="badge badge-priority">Priority</span></div>
+    <div class="card" onclick="show('corporate-groups', this)"><div class="card-name">Corporate Groups</div><div class="card-slug">/corporate-groups</div><span class="badge badge-new">New</span></div>
+    <div class="card" onclick="show('community-groups', this)"><div class="card-name">Community Groups</div><div class="card-slug">/community-groups</div><span class="badge badge-new">New</span></div>
+    <div class="card" onclick="show('stories', this)"><div class="card-name">Stories</div><div class="card-slug">/stories</div><span class="badge badge-new">New</span></div>
+  </div>
+</div>
+
+<!-- STUDIO PROGRAMS -->
+<div class="tier">
+  <div class="tier-label">Studio Programs — Future / TBC</div>
+  <div class="cards">
+    <div class="card" onclick="show('programs-beginner', this)"><div class="card-name">Beginner Course</div><div class="card-slug">/programs/beginner-course</div><span class="badge badge-future">Future</span></div>
+    <div class="card" onclick="show('programs-classes', this)"><div class="card-name">Regular Classes</div><div class="card-slug">/programs/classes</div><span class="badge badge-future">Future</span></div>
+    <div class="card" onclick="show('programs-homeschool', this)"><div class="card-name">Homeschool Program</div><div class="card-slug">/programs/homeschool</div><span class="badge badge-future">Future</span></div>
+    <div class="card" onclick="show('programs-teens', this)"><div class="card-name">Teen Drop-in</div><div class="card-slug">/programs/teens</div><span class="badge badge-future">Future</span></div>
+    <div class="card" onclick="show('programs-advanced', this)"><div class="card-name">Advanced Classes</div><div class="card-slug">/programs/advanced</div><span class="badge badge-future">Future</span></div>
+  </div>
+</div>
+
+<!-- TRANSACTIONAL & UTILITY -->
+<div class="tier">
+  <div class="tier-label">Transactional &amp; Utility</div>
+  <div class="cards">
+    <div class="card" onclick="show('book', this)"><div class="card-name">Book an Experience</div><div class="card-slug">/book</div><span class="badge badge-exists">Exists</span></div>
+    <div class="card" onclick="show('enquire', this)"><div class="card-name">Large Group Enquiry</div><div class="card-slug">/enquire</div><span class="badge badge-new">New</span></div>
+    <div class="card" onclick="show('faq', this)"><div class="card-name">FAQ</div><div class="card-slug">/faq</div><span class="badge badge-new">New</span></div>
+  </div>
+</div>
+
+<!-- ECOMMERCE COMPONENTS -->
+<div class="tier">
+  <div class="tier-label">Ecommerce Components</div>
+  <div class="cards">
+    <div class="card" onclick="show('cart', this)"><div class="card-name">Cart</div><div class="card-slug">/cart</div><span class="badge badge-utility">Utility</span></div>
+    <div class="card" onclick="show('checkout', this)"><div class="card-name">Checkout</div><div class="card-slug">/checkout</div><span class="badge badge-utility">Utility</span></div>
+    <div class="card" onclick="show('order-confirmation', this)"><div class="card-name">Order Confirmation</div><div class="card-slug">/order-confirmation</div><span class="badge badge-utility">Utility</span></div>
+    <div class="card" onclick="show('account', this)"><div class="card-name">My Account</div><div class="card-slug">/account</div><span class="badge badge-utility">Utility</span></div>
+    <div class="card" onclick="show('collection-glaze', this)">
+      <div class="card-name">Collection: Glaze</div>
+      <div class="card-slug">/shop/collection/glaze</div>
+      <span class="badge badge-utility">Utility</span>
+      <div class="sub-tier">
+        <div class="sub-tier-label">e.g. taxonomy</div>
+        <div style="font-size:11px;color:#aaa;font-family:monospace;line-height:1.8">/glaze/shore-break<br>/glaze/bunker-bay<br>/glaze/desert-days</div>
+      </div>
+    </div>
+    <div class="card" onclick="show('collection-type', this)">
+      <div class="card-name">Collection: Type</div>
+      <div class="card-slug">/shop/collection/type</div>
+      <span class="badge badge-utility">Utility</span>
+      <div class="sub-tier">
+        <div class="sub-tier-label">e.g. taxonomy</div>
+        <div style="font-size:11px;color:#aaa;font-family:monospace;line-height:1.8">/type/cups<br>/type/bowls<br>/type/plates</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL & POLICY -->
+<div class="tier">
+  <div class="tier-label">Legal &amp; Policy</div>
+  <div class="cards">
+    <div class="card" onclick="show('privacy', this)"><div class="card-name">Privacy Policy</div><div class="card-slug">/privacy</div><span class="badge badge-legal">Legal</span></div>
+    <div class="card" onclick="show('terms', this)"><div class="card-name">Terms &amp; Conditions</div><div class="card-slug">/terms</div><span class="badge badge-legal">Legal</span></div>
+    <div class="card" onclick="show('shipping', this)"><div class="card-name">Shipping &amp; Returns</div><div class="card-slug">/shipping</div><span class="badge badge-legal">Legal</span></div>
+    <div class="card" onclick="show('accessibility', this)"><div class="card-name">Accessibility</div><div class="card-slug">/accessibility</div><span class="badge badge-legal">Legal</span></div>
+  </div>
+</div>
+
+<hr class="divider">
+<div id="detail-panel" class="empty">Click any page card above to see its proposed sections and notes</div>
+
+<script>
+const pages = {
+  'home': { name: 'Home', slug: '/home', status: 'Exists', purpose: 'Organic/walk-in entry point. Not segment-specific — orientates all visitor types and routes them to the right place.', sections: ['Hero — warm, place-specific. Studio or Myles at wheel', 'Quick orientation tiles — Experiences / Shop / Visit / What We Do', 'Current highlight (e.g. Open Studios banner if active)', 'Short brand story pull-quote', 'Instagram feed strip', 'Footer'], cta: 'Route visitors to their relevant page', notes: 'Exists but needs full visual rebuild. Home should not try to convert — it routes. Not segment-specific.' },
+  'experiences': { name: 'Experiences', slug: '/experiences', status: 'Exists', purpose: 'Hub for all bookable experiences and programs. Browse then book.', sections: ['Hero — hands-on clay photo', 'Studio Pottery Experience card ($69, 1.5hr)', 'Group experiences card (links to /schools or /enquire)', 'Open Studios demo session card (seasonal)', 'Programs overview (links to /programs/* when live)', 'FAQ accordion'], cta: 'Book a pottery experience →', notes: 'Exists in some form. Needs restructure to accommodate programs tier when ready.' },
+  'shop': { name: 'Shop', slug: '/shop', status: 'Exists', purpose: 'All purchasable items: pottery, gift cards, experience vouchers. Browse by glaze or type using collection taxonomy.', sections: ['Product grid — all pottery', 'Filter/browse by: Glaze | Type (taxonomy collections)', 'Gift cards & experience vouchers section', 'Shipping note — Australia-wide'], cta: 'Shop the collection →', notes: 'WooCommerce exists. Glaze and Type are product taxonomies — browse views live at /shop/collection/glaze and /shop/collection/type. Not separate pages, just filtered views.' },
+  'what-we-do': { name: 'What We Do', slug: '/what-we-do', status: 'New', purpose: 'Capability & proof-of-work page. Targets schools, corporates, and organisations. Shows what\'s possible at scale.', sections: ['Hero — "40 years of making. Here\'s what that looks like."', 'Case study: Ramsay Health — scale corporate order', 'Case study: School camp / group booking', 'Case study: Bespoke commission or custom glaze run', 'Capability tiles: custom orders / group experiences / school programs / corporate gifting', 'Inline enquiry CTA → /contact with type pre-selected'], cta: 'Talk to us about your project →', notes: 'New page. Credibility anchor for B2B traffic. Portfolio feel, not brochure.' },
+  'about': { name: 'About', slug: '/about', status: 'Priority', purpose: 'Brand story. 40 years, Myles\'s backstory, glaze naming, the grandmother\'s wheel.', sections: ['Myles\'s origin story — grew up in family pottery', 'The grandmother\'s wheel', 'Glaze naming — Shore Break, Bunker Bay, Desert Days, Wyadup Stone, Emerald', 'Who visits Happs (audience overview)', 'Studio photos', 'Link to /stories for ongoing content'], cta: 'Visit the studio →', notes: 'Priority — Myles asked for it. Written voice here is already a brand strength.' },
+  'visit': { name: 'Visit', slug: '/visit', status: 'New', purpose: '"Plan your visit" practical page. Remove all friction from a studio visit decision.', sections: ['Address: 749 Caves Road, Dunsborough WA', 'Map embed', 'Opening hours', 'Parking / access notes', 'What to expect on arrival', 'Open Studios dates if active'], cta: 'Get directions →', notes: 'New page. Map embed essential — visitors navigating from regional accommodation.' },
+  'contact': { name: 'Contact', slug: '/contact', status: 'New', purpose: 'Single contact page with enquiry type selector routing to the right GHL pipeline.', sections: ['Contact form: Name / Email / Enquiry type / Message', 'Enquiry types: General · Book an experience · School/group · Corporate order · Commission · Media', 'Studio address + hours', 'Instagram link'], cta: 'Send message →', notes: 'Enquiry type selector routes to different GHL pipelines. Segment pages (/schools, /corporate etc) can have inline forms with type pre-filled.' },
+  'schools': { name: 'Schools & Groups', slug: '/schools', status: 'Priority', purpose: 'Highest commercial value segment. ~$10k invoices. Targets teachers and school coordinators.', sections: ['Hero — group in studio, professional tone', 'What\'s included (structured experience outline)', 'Curriculum links / learning outcomes', 'Logistics: group sizes, duration, transport, catering', 'Pricing overview or "contact for quote"', 'Testimonial or case study', 'Booking enquiry form → GHL'], cta: 'Enquire about a school booking →', notes: 'Priority. Position similar to outdoor education programs. Groups don\'t pay online — feeds enquiry pipeline.' },
+  'corporate': { name: 'Corporate Gifts', slug: '/corporate', status: 'Priority', purpose: 'Targets the corporate researcher who needs a gifting package for decision-makers. 10–50 units, custom glaze, lead time.', sections: ['Hero — product photography, understated', 'What\'s possible: custom glaze, branding, quantities', 'Lead times + process overview', 'Ramsay Health or similar case study', 'Downloadable capability one-pager (optional)', 'Enquiry form'], cta: 'Start a corporate order →', notes: 'Priority. Target the researcher, not just the decision-maker. Include sample process and lead time upfront. Distinct from /corporate-groups (gifting vs experience).' },
+  'open-studios': { name: 'Open Studios 2026', slug: '/open-studios', status: 'Priority', purpose: 'Campaign landing page. QR destination from MRROS print ad. Converts curiosity into demo bookings, experience bookings, and email sign-ups.', sections: ['Hero — Myles at wheel, visual continuity with print ad', 'Demo Sessions — $10, Sat/Sun mornings (primary CTA)', 'Plan Your Visit — dates, hours, map', 'Book a Pottery Experience — $69', 'Myles\'s Story', 'Shop ceramics — passive conversion', 'Email capture — GHL', 'Footer'], cta: 'Secure your demo session →', notes: 'Priority. Mobile-first — QR scan = mobile visit. UTM: ?utm_source=mrros&utm_medium=print&utm_campaign=open-studios-2026. Full brief in Notion.' },
+  'corporate-groups': { name: 'Corporate Groups', slug: '/corporate-groups', status: 'New', purpose: 'Targets corporates booking group experiences — team days, offsites, staff events. Distinct from /corporate (gifting) and /schools (education).', sections: ['Hero — group activity, relaxed but professional', 'What a corporate group day looks like', 'Group sizes and session options', 'Pricing / enquire for quote', 'Testimonial or case study', 'Enquiry form → GHL'], cta: 'Enquire about a group day →', notes: 'New. Distinct from /corporate (product gifting) — this is about group experience bookings. Teams, offsites, staff wellbeing.' },
+  'community-groups': { name: 'Community Groups', slug: '/community-groups', status: 'New', purpose: 'Targets community organisations, clubs, social groups, not-for-profits. More accessible tone than corporate.', sections: ['Hero — community, welcoming tone', 'What a community group session looks like', 'Group sizes and session options', 'Pricing / accessibility / concession info', 'Enquiry form → GHL'], cta: 'Get in touch about your group →', notes: 'New. Tone: warm and inclusive, not corporate. Could include Men\'s Wellbeing / therapy-adjacent groups in future.' },
+  'stories': { name: 'Stories', slug: '/stories', status: 'New', purpose: 'Long-form content. Studio journal, behind-the-scenes, glaze stories. Warm brand depth + SEO.', sections: ['Article index — card grid', 'Featured/latest story hero', 'Categories: Studio · Glazes · People · Making · Places'], cta: 'Read the latest →', notes: 'New. "Stories" not "Blog". Good for organic search around Open Studios and glaze/place names.' },
+  'programs-beginner': { name: 'Beginner Course', slug: '/programs/beginner-course', status: 'Future', purpose: '6-week structured course. 2×90min/week + practice slots.', sections: ['Course overview', 'Schedule + dates', 'What you\'ll make', 'Pricing', 'Waitlist CTA'], cta: 'Join the waitlist →', notes: 'Future/TBC. Tutor and capacity not confirmed. Launch as waitlist initially.' },
+  'programs-classes': { name: 'Regular Classes', slug: '/programs/classes', status: 'Future', purpose: '10-session pass model (valid 20 weeks). Mon (Myles) + Fri (in-house).', sections: ['Class overview', 'Session pass pricing', 'Calendar / availability', 'Book a pass CTA'], cta: 'Buy a session pass →', notes: 'Future/TBC. Pilates-style booking model.' },
+  'programs-homeschool': { name: 'Homeschool Program', slug: '/programs/homeschool', status: 'Future', purpose: 'Structured program for homeschool families. 12 children max. Karen & Emma delivering.', sections: ['Program overview', 'Schedule + term dates', 'Who it\'s for', 'Enrol / enquire CTA'], cta: 'Enquire about enrolment →', notes: 'Future/TBC. Zoom component for parent support.' },
+  'programs-teens': { name: 'Teen Drop-in', slug: '/programs/teens', status: 'Future', purpose: 'Ages 13+, Monday afternoons, scholarship model.', sections: ['Program overview', 'Scholarship info', 'Sign up / enquire'], cta: 'Find out more →', notes: 'Future/TBC. Scholarship model.' },
+  'programs-advanced': { name: 'Advanced Classes', slug: '/programs/advanced', status: 'Future', purpose: 'Premium post-beginner pathway. Also functions as staff pipeline.', sections: ['What advanced means here', 'Prerequisites', 'Enquire / apply'], cta: 'Apply for advanced →', notes: 'Future/TBC. Premium tier. Staff pipeline consideration.' },
+  'book': { name: 'Book an Experience', slug: '/book', status: 'Exists', purpose: 'Primary booking flow. Show availability first, then group size.', sections: ['Availability calendar — open dates and seats FIRST', 'Select experience type', 'Select group size', 'Name + email capture', 'Confirm + pay'], cta: 'Check availability →', notes: 'Exists (Amelia) but major UX problem: currently asks group size before showing availability. Must fix. Meeting with Steve needed.' },
+  'enquire': { name: 'Large Group Enquiry', slug: '/enquire', status: 'New', purpose: 'Large groups don\'t pay online — this form feeds GHL for follow-up.', sections: ['Organisation name', 'Contact name + email + phone', 'Group size', 'Preferred dates', 'Message / requirements', 'Submit → GHL pipeline'], cta: 'Submit enquiry →', notes: 'Renamed from "Group Enquiry" to "Large Group Enquiry" to clarify this is for large/custom bookings. Segment pages also have their own inline forms.' },
+  'faq': { name: 'FAQ', slug: '/faq', status: 'New', purpose: 'Reduce pre-booking friction across experiences, programs, gifting, shop, and groups.', sections: ['Experiences FAQs', 'Programs FAQs', 'Gifting & corporate FAQs', 'Shop & shipping FAQs', 'Groups & schools FAQs'], cta: 'Still have questions? Contact us →', notes: 'New. Accordion format. Categories map to main site sections.' },
+  'cart': { name: 'Cart', slug: '/cart', status: 'Utility', purpose: 'Standard WooCommerce cart.', sections: ['Cart items', 'Quantity controls', 'Subtotal', 'Proceed to checkout CTA'], cta: 'Proceed to checkout →', notes: 'Utility — WooCommerce handles this. Visual theme alignment needed.' },
+  'checkout': { name: 'Checkout', slug: '/checkout', status: 'Utility', purpose: 'Standard WooCommerce checkout.', sections: ['Shipping details', 'Payment', 'Order summary', 'Place order CTA'], cta: 'Place order →', notes: 'Utility — WooCommerce handles this. Visual theme alignment needed.' },
+  'order-confirmation': { name: 'Order Confirmation', slug: '/order-confirmation', status: 'Utility', purpose: 'Post-purchase confirmation + soft upsell.', sections: ['Order confirmed message', 'Order summary', 'Soft CTA: Book a pottery experience', 'Follow on Instagram'], cta: 'Book a pottery experience →', notes: 'Utility. Good opportunity for soft upsell or newsletter sign-up.' },
+  'account': { name: 'My Account', slug: '/account', status: 'Utility', purpose: 'Customer account: orders, bookings, saved addresses.', sections: ['Order history', 'Booking history', 'Account details', 'Logout'], cta: null, notes: 'Utility — WooCommerce/Amelia handle this. Theme alignment needed.' },
+  'collection-glaze': { name: 'Collection: Glaze', slug: '/shop/collection/glaze', status: 'Utility', purpose: 'Product taxonomy view — browse all products filtered by glaze name. Not a standalone page; a filtered WooCommerce collection view.', sections: ['Collection header — glaze name + colour description', 'Filtered product grid', 'Link to other glazes'], cta: 'Shop this glaze →', notes: 'Taxonomy, not a standalone page. Each glaze (Shore Break, Bunker Bay, Desert Days, Wyadup Stone, Emerald) generates its own collection URL. WooCommerce product attribute or category.' },
+  'collection-type': { name: 'Collection: Type', slug: '/shop/collection/type', status: 'Utility', purpose: 'Product taxonomy view — browse all products filtered by type (cup, bowl, plate, vase etc).', sections: ['Collection header — type name', 'Filtered product grid', 'Link to other types'], cta: 'Shop all cups →', notes: 'Taxonomy, not a standalone page. Types (cups, bowls, plates etc) filter the product grid. WooCommerce product category or attribute.' },
+  'privacy': { name: 'Privacy Policy', slug: '/privacy', status: 'Legal', purpose: 'Legal requirement. Covers data collection, GHL CRM, WooCommerce, Google Analytics.', sections: ['Data we collect', 'How we use it', 'Third-party tools (GHL, GA, WooCommerce)', 'Contact for data requests'], cta: null, notes: 'Legal. Needs update to reference GoHighLevel as the CRM/email platform.' },
+  'terms': { name: 'Terms & Conditions', slug: '/terms', status: 'Legal', purpose: 'Purchase terms, cancellation policy for experiences and programs.', sections: ['Purchase terms', 'Cancellation / refund policy for experiences', 'Cancellation policy for programs', 'Gifting terms'], cta: null, notes: 'Legal. Cancellation policy for experiences and programs especially important.' },
+  'shipping': { name: 'Shipping & Returns', slug: '/shipping', status: 'Legal', purpose: 'Ecommerce shipping policy. Australia-wide. Handling fragile ceramics.', sections: ['Shipping rates + timeframes', 'Packaging note — handmade ceramics', 'Returns policy', 'Damaged in transit process'], cta: null, notes: 'Legal/ecommerce. Fragile ceramics = packaging policy matters.' },
+  'accessibility': { name: 'Accessibility', slug: '/accessibility', status: 'Legal', purpose: 'Accessibility statement for the website and physical studio.', sections: ['Website accessibility (WCAG alignment)', 'Physical studio access (parking, paths, wheel height)', 'How to request accommodations', 'Contact for accessibility enquiries'], cta: 'Contact us about accessibility →', notes: 'New. Covers both digital and physical. Especially relevant for schools/groups audience.' }
+};
+
+function show(id, el) {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  const p = pages[id];
+  if (!p) return;
+  const badgeMap = { Exists: 'badge-exists', New: 'badge-new', Priority: 'badge-priority', Future: 'badge-future', Utility: 'badge-utility', Legal: 'badge-legal' };
+  const sectionsHtml = p.sections.map(s => `<li>${s}</li>`).join('');
+  const ctaHtml = p.cta ? `<div class="detail-block"><h4>Primary CTA</h4><p>${p.cta}</p></div>` : '';
+  const panel = document.getElementById('detail-panel');
+  panel.className = '';
+  panel.innerHTML = `
+    <div class="detail-title">${p.name} <span class="badge ${badgeMap[p.status]||'badge-new'}" style="font-size:11px;vertical-align:middle;margin-left:6px">${p.status}</span></div>
+    <div class="detail-slug">${p.slug}</div>
+    <div class="detail-grid">
+      <div class="detail-block" style="grid-column:1/-1"><h4>Purpose</h4><p>${p.purpose}</p></div>
+      <div class="detail-block"><h4>Proposed Sections</h4><ul>${sectionsHtml}</ul></div>
+      ${ctaHtml}
+      <div class="detail-block"><h4>Notes</h4><p>${p.notes}</p></div>
+    </div>`;
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>
