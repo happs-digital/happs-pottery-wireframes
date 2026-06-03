@@ -10,7 +10,13 @@
       "Bash(ssh -T git@github.com)",
       "Bash(ls ~/.ssh/*.pub 2>/dev/null && echo \"SSH keys found\" || echo \"No SSH keys\")",
       "Bash(mkdir -p experiences blog page/programs landing-page policy)",
-      "Bash(git mv *)"
+      "Bash(git mv *)",
+      "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" status)",
+      "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" diff --stat)",
+      "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" push origin main)",
+      "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" remote set-url origin git@github.com:happs-digital/happs-pottery-wireframes.git)",
+      "Bash(ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null && git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" push origin main)",
+      "Bash(ssh-keyscan github.com)"
     ]
   }
 }

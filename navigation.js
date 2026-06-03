@@ -100,7 +100,7 @@
             '<h4>Studio</h4>',
             '<ul>',
               '<li><a href="' + root + 'page/about.html">About</a></li>',
-              '<li><a href="' + root + 'blog/stories.html">Stories</a></li>',
+              '<li><a href="' + root + 'blog/index.html">Stories</a></li>',
               '<li><a href="' + root + 'page/visit.html">Visit</a></li>',
               '<li><a href="' + root + 'page/faq.html">FAQ</a></li>',
             '</ul>',
