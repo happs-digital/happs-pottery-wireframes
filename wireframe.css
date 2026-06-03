@@ -565,6 +565,91 @@ footer.wf-footer {
   flex-shrink: 0;
 }
 
+/* ─── Content Outline Block ─────────────────────────────── */
+
+.wf-outline {
+  border: 2px dashed #999;
+  border-radius: 4px;
+  background: #fafafa;
+  padding: 2rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.wf-outline::before {
+  content: "CONTENT OUTLINE";
+  position: absolute;
+  top: -11px;
+  left: 16px;
+  background: #fafafa;
+  padding: 0 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #888;
+}
+
+.wf-outline-section {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.wf-outline-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.wf-outline-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  margin: 0 0 0.5rem;
+}
+
+.wf-outline-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 0.75rem;
+}
+
+.wf-outline p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 0.5rem;
+}
+
+.wf-outline ul,
+.wf-outline ol {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+  padding-left: 1.25rem;
+  margin: 0.25rem 0 0;
+}
+
+.wf-outline li {
+  margin-bottom: 0.25rem;
+}
+
+.wf-outline-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #ebebeb;
+  color: #666;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin: 0 4px 4px 0;
+}
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .wf-grid-2,
