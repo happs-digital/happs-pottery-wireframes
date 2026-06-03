@@ -138,6 +138,7 @@ main > .wf-section:last-child { border-bottom: none; }
   margin-bottom: 8px;
 }
 .wf-placeholder {
+  display: inline-block;
   background: #f0f0f0;
   border: 1px dashed #ccc;
   color: #aaa;
