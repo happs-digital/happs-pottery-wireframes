@@ -28,11 +28,12 @@ ul { padding-left: 1.25rem; }
 
 /* Header — full viewport width, content capped at 1440px */
 header.wf-header {
-  background: #555555;
+  background: #fff;
   position: sticky;
   top: 44px;
   z-index: 100;
   width: 100%;
+  border-bottom: 1px solid #e8e8e8;
 }
 .wf-header-inner {
   max-width: 1440px;
@@ -45,16 +46,17 @@ nav.wf-nav {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  height: 52px;
+  min-height: 80px;
+  height: 80px;
 }
-nav.wf-nav a { color: #fff; text-decoration: none; font-size: 14px; padding: 0 12px; }
-nav.wf-nav a.active { border-bottom: 2px solid #fff; }
-nav.wf-nav a:hover { color: #ccc; }
-.wf-nav-brand { color: #fff; font-weight: 600; font-size: 15px; white-space: nowrap; }
+nav.wf-nav a { color: #333; text-decoration: none; font-size: 14px; padding: 0 12px; }
+nav.wf-nav a.active { border-bottom: 2px solid #333; }
+nav.wf-nav a:hover { color: #666; }
+.wf-nav-brand { color: #111; font-weight: 600; font-size: 15px; white-space: nowrap; }
 .wf-nav-links { display: flex; align-items: center; justify-content: center; }
 .wf-nav-actions { display: flex; align-items: center; justify-content: flex-end; gap: 4px; }
 .wf-nav-actions a { padding: 6px 8px; display: flex; align-items: center; }
-.wf-nav-actions svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.wf-nav-actions svg { width: 18px; height: 18px; stroke: #444; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .wf-nav-badge {
   font-size: 11px;
   background: #777;
@@ -66,9 +68,11 @@ nav.wf-nav a:hover { color: #ccc; }
 /* Breadcrumb — inside header */
 .wf-breadcrumb {
   font-size: 12px;
-  color: #ccc;
-  padding: 7px 0;
-  border-top: 1px solid rgba(255,255,255,0.12);
+  color: #888;
+  padding: 7px 1.5rem;
+  background: #f5f5f5;
+  border-top: 1px solid #e8e8e8;
+  margin: 0 -1.5rem;
 }
 
 /* Main content — full width, sections handle their own padding */
@@ -99,7 +103,7 @@ main {
 }
 .wf-image {
   background: #e8e8e8;
-  border: 1px solid #ccc;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,7 +183,7 @@ main {
 
 /* ── Footer — full viewport width, content capped at 1440px ── */
 footer.wf-footer {
-  border-top: 2px solid #222;
+  background: #f5f5f5;
   margin-top: 3rem;
   font-size: 13px;
   color: #666;
