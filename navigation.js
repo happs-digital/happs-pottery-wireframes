@@ -119,7 +119,7 @@
         '<div class="wf-footer-acknowledgement">',
           '<p>We acknowledge the Wadandi People as the First Nations People of this land we proudly call home, that we live, work and play on. We respect deeply the Elders that have passed, that we are privileged to work and share time with; and acknowledge the rising leaders in the community.</p>',
         '</div>',
-        '<p class="wf-footer-note">Happs Pottery Wireframe Prototype — for internal review only · happspottery.com.au</p>',
+        '<p class="wf-footer-note">&copy; 2026 Happs Pottery. All rights reserved.</p>',
       '</div>'
     ].join('');
     body.appendChild(footer);
