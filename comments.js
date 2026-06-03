@@ -76,8 +76,7 @@
     '}',
     '#wf-export-btn:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.6);}',
 
-    /* ── Page wrapper ── */
-    '#wf-page.wrapper{position:relative;margin-top:52px;}',
+    /* ── Page wrapper — layout handled in wireframe.css ── */
     'body.comment-mode #wf-page{cursor:crosshair;}',
     'body.comment-mode #wf-mode-toggle{background:#f5c842;color:#111;}',
 

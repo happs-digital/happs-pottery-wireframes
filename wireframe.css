@@ -3,9 +3,9 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body, html {}
-
-html, body {}
+html, body {
+  min-height: 100vh;
+}
 
 body {
   background: #fff;
@@ -25,7 +25,14 @@ ul { padding-left: 1.25rem; }
 /* Outer wrapper — set by comments.js */
 #wf-page.wrapper {
   position: relative;
-  margin-top: 44px; /* toolbar height */
+  margin-top: 52px; /* toolbar height */
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 52px);
+}
+
+main {
+  flex: 1;
 }
 
 /* Header — full viewport width, content capped at 1440px */
@@ -184,7 +191,7 @@ main > .wf-section:last-child { border-bottom: none; }
 /* ── Footer — full viewport width, content capped at 1440px ── */
 footer.wf-footer {
   background: #e0e0e0;
-  margin-top: 3rem;
+  margin-top: auto;
   font-size: 13px;
   color: #666;
   width: 100%;
