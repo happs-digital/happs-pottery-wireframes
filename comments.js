@@ -283,7 +283,7 @@
     toolbar.id = 'wf-toolbar';
     toolbar.innerHTML =
       '<div class="wf-tb-left">' +
-        '<span class="wf-tb-badge">Proto</span>' +
+        '<span class="wf-tb-badge">Prototype</span>' +
         '<span class="wf-tb-title">' + escHtml(document.title) + '</span>' +
         '<div class="wf-tb-divider"></div>' +
         '<a href="' + BASE + 'happs-sitemap.html" class="wf-tb-nav-btn">Proposed Sitemap</a>' +
