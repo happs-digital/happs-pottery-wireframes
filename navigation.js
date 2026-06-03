@@ -1,27 +1,21 @@
 (function () {
-  // Derive the root-relative prefix based on how deep the current page is
-  function getRootPrefix() {
-    var depth = window.location.pathname.split('/').filter(Boolean).length - 1;
-    if (depth <= 0) return '';
-    var prefix = '';
-    for (var i = 0; i < depth; i++) prefix += '../';
-    return prefix;
-  }
+  // Fixed base for GitHub Pages — all nav/footer links are absolute from here
+  var BASE = '/happs-pottery-wireframes/';
 
   // Highlight active nav link
-  function setActive(navEl, root) {
+  function setActive(navEl) {
     var path = window.location.pathname;
     var links = navEl.querySelectorAll('a[data-page]');
     links.forEach(function (a) {
       var page = a.getAttribute('data-page');
-      if (path.endsWith(page) || (page === 'index.html' && (path === '/' || path.endsWith('/')))) {
+      if (path.endsWith(page) || (page === 'index.html' && path === BASE)) {
         a.classList.add('active');
       }
     });
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    var root = getRootPrefix();
+    var root = BASE;
     var body = document.body;
     var firstChild = body.firstChild;
 
@@ -47,7 +41,7 @@
       '</div>'
     ].join('');
     body.insertBefore(nav, banner.nextSibling);
-    setActive(nav, root);
+    setActive(nav);
 
     // 3. Breadcrumb
     var bc = document.createElement('div');
