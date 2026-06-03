@@ -1,27 +1,94 @@
 (function () {
 
+  var BASE = '/happs-pottery-wireframes/';
+
   // ── Inject CSS ──
   var style = document.createElement('style');
   style.textContent = [
-    /* toolbar */
-    '#wf-toolbar{position:fixed;top:0;left:0;right:0;height:44px;background:#1a1a1a;color:#fff;display:flex;align-items:center;gap:12px;padding:0 16px;z-index:9999;font-size:12px;font-family:system-ui,-apple-system,sans-serif;user-select:none;}',
-    '#wf-toolbar .wf-tb-title{font-weight:600;opacity:.9;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
-    '#wf-toolbar .wf-tb-meta{opacity:.45;font-size:11px;}',
-    '#wf-mode-toggle{background:#fff;color:#1a1a1a;border:none;border-radius:4px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.04em;transition:background .15s;white-space:nowrap;}',
-    '#wf-mode-toggle:hover{background:#e0e0e0;}',
-    '#wf-mode-toggle.active{background:#f5a623;color:#1a1a1a;}',
-    '#wf-export-btn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:5px 12px;font-size:11px;cursor:pointer;transition:border-color .15s;white-space:nowrap;}',
-    '#wf-export-btn:hover{border-color:rgba(255,255,255,.7);}',
-    '#wf-comment-count{background:#f5a623;color:#1a1a1a;border-radius:10px;padding:1px 7px;font-size:10px;font-weight:700;min-width:20px;text-align:center;display:none;}',
-    /* page wrapper */
-    '#wf-page{position:relative;margin-top:44px;}',
+
+    /* ── Toolbar — distinct UI chrome, not wireframe body ── */
+    '#wf-toolbar{',
+      'position:fixed;top:0;left:0;right:0;height:44px;',
+      'background:#0f0f0f;',
+      'border-bottom:1px solid #1e1e1e;',
+      'box-shadow:0 1px 0 #000, 0 2px 8px rgba(0,0,0,0.4);',
+      'color:#fff;display:flex;align-items:center;',
+      'z-index:9999;font-family:system-ui,-apple-system,sans-serif;',
+      'font-size:12px;user-select:none;',
+    '}',
+
+    /* Left section — prototype identity */
+    '.wf-tb-left{display:flex;align-items:center;gap:8px;padding:0 14px;flex:1;min-width:0;overflow:hidden;}',
+    '.wf-tb-badge{',
+      'font-family:"SF Mono","Fira Code","Consolas",monospace;',
+      'font-size:9px;font-weight:700;letter-spacing:0.14em;',
+      'background:#2a2a2a;color:#888;',
+      'border:1px solid #3a3a3a;',
+      'padding:2px 8px;border-radius:3px;white-space:nowrap;',
+      'text-transform:uppercase;',
+    '}',
+    '.wf-tb-title{',
+      'font-family:"SF Mono","Fira Code","Consolas",monospace;',
+      'font-size:11px;color:#bbb;',
+      'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;',
+    '}',
+    '.wf-tb-divider{width:1px;height:20px;background:#2a2a2a;flex-shrink:0;margin:0 4px;}',
+
+    /* Sitemap nav buttons */
+    '.wf-tb-nav-btn{',
+      'font-size:11px;color:#888;',
+      'background:#1a1a1a;',
+      'border:1px solid #2e2e2e;',
+      'border-radius:4px;padding:4px 10px;',
+      'cursor:pointer;text-decoration:none;white-space:nowrap;',
+      'transition:background 0.15s,color 0.15s,border-color 0.15s;',
+      'font-family:inherit;line-height:1;',
+    '}',
+    '.wf-tb-nav-btn:hover{background:#252525;color:#ddd;border-color:#444;}',
+
+    /* Right section — comment tools */
+    '.wf-tb-right{',
+      'display:flex;align-items:center;gap:6px;',
+      'padding:0 14px;',
+      'border-left:1px solid #1e1e1e;',
+      'flex-shrink:0;',
+    '}',
+    '#wf-comment-count{',
+      'background:#3a3a3a;color:#ccc;',
+      'border-radius:999px;padding:1px 8px;',
+      'font-size:10px;font-weight:700;',
+      'min-width:22px;text-align:center;',
+      'display:none;border:1px solid #4a4a4a;',
+    '}',
+    '#wf-mode-toggle{',
+      'background:#e0e0e0;color:#111;',
+      'border:none;border-radius:4px;',
+      'padding:5px 12px;font-size:11px;font-weight:600;',
+      'cursor:pointer;letter-spacing:0.03em;',
+      'transition:background 0.15s;white-space:nowrap;font-family:inherit;',
+    '}',
+    '#wf-mode-toggle:hover{background:#fff;}',
+    '#wf-mode-toggle.active{background:#f5c842;color:#111;}',
+    '#wf-export-btn{',
+      'background:transparent;color:#777;',
+      'border:1px solid #2e2e2e;border-radius:4px;',
+      'padding:5px 12px;font-size:11px;',
+      'cursor:pointer;transition:border-color 0.15s,color 0.15s;',
+      'white-space:nowrap;font-family:inherit;',
+    '}',
+    '#wf-export-btn:hover{border-color:#555;color:#bbb;}',
+
+    /* ── Page wrapper ── */
+    '#wf-page.wrapper{position:relative;margin-top:44px;}',
     'body.comment-mode #wf-page{cursor:crosshair;}',
-    'body.comment-mode #wf-mode-toggle{background:#f5a623;}',
-    /* pins */
-    '.wf-pin{position:absolute;width:28px;height:28px;background:#f5a623;border:2px solid #1a1a1a;border-radius:50% 50% 50% 0;transform:rotate(-45deg);cursor:pointer;z-index:8000;transition:transform .15s,box-shadow .15s;}',
-    '.wf-pin:hover{transform:rotate(-45deg) scale(1.15);box-shadow:0 2px 8px rgba(0,0,0,.25);}',
-    '.wf-pin .pin-num{position:absolute;top:50%;left:50%;transform:rotate(45deg) translate(-50%,-50%);font-size:10px;font-weight:700;color:#1a1a1a;line-height:1;margin-top:-1px;}',
-    /* bubble */
+    'body.comment-mode #wf-mode-toggle{background:#f5c842;color:#111;}',
+
+    /* ── Comment pins ── */
+    '.wf-pin{position:absolute;width:28px;height:28px;background:#f5c842;border:2px solid #111;border-radius:50% 50% 50% 0;transform:rotate(-45deg);cursor:pointer;z-index:8000;transition:transform .15s,box-shadow .15s;}',
+    '.wf-pin:hover{transform:rotate(-45deg) scale(1.15);box-shadow:0 2px 8px rgba(0,0,0,.3);}',
+    '.wf-pin .pin-num{position:absolute;top:50%;left:50%;transform:rotate(45deg) translate(-50%,-50%);font-size:10px;font-weight:700;color:#111;line-height:1;margin-top:-1px;}',
+
+    /* ── Comment bubble ── */
     '.wf-bubble{position:absolute;background:#fff;border:1.5px solid #1a1a1a;border-radius:8px;padding:10px 12px;width:220px;z-index:8500;box-shadow:3px 3px 0 #1a1a1a;font-size:12px;line-height:1.5;color:#1a1a1a;display:none;}',
     '.wf-bubble.visible{display:block;}',
     '.wf-bubble .bubble-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}',
@@ -31,7 +98,8 @@
     '.wf-bubble .bubble-text{color:#333;}',
     '.wf-bubble .bubble-delete{margin-top:8px;font-size:10px;color:#bbb;cursor:pointer;text-decoration:underline;}',
     '.wf-bubble .bubble-delete:hover{color:#c00;}',
-    /* input popup */
+
+    /* ── Comment input popup ── */
     '#wf-input-popup{position:fixed;background:#fff;border:1.5px solid #1a1a1a;border-radius:8px;padding:12px;width:240px;z-index:9500;box-shadow:3px 3px 0 #1a1a1a;display:none;font-family:system-ui,-apple-system,sans-serif;}',
     '#wf-input-popup.visible{display:block;}',
     '#wf-input-popup label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;display:block;margin-bottom:6px;}',
@@ -43,7 +111,8 @@
     '#wf-input-save:hover{background:#333;}',
     '#wf-input-cancel{background:transparent;color:#888;border:1px solid #ddd;border-radius:4px;padding:7px 10px;font-size:12px;cursor:pointer;}',
     '#wf-input-cancel:hover{border-color:#888;color:#333;}',
-    /* export panel */
+
+    /* ── Export panel ── */
     '#wf-export-panel{position:fixed;top:54px;right:16px;background:#fff;border:1.5px solid #1a1a1a;border-radius:8px;padding:16px;width:320px;z-index:9000;box-shadow:3px 3px 0 #1a1a1a;display:none;font-size:12px;font-family:system-ui,-apple-system,sans-serif;}',
     '#wf-export-panel.visible{display:block;}',
     '#wf-export-panel h3{font-size:13px;margin-bottom:4px;}',
@@ -53,31 +122,28 @@
     '#wf-copy-btn:hover{background:#333;}',
     '#wf-export-close{position:absolute;top:12px;right:12px;cursor:pointer;color:#888;font-size:16px;line-height:1;}',
     '#wf-export-close:hover{color:#1a1a1a;}',
-    /* hint */
-    '#wf-hint{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:8px 16px;border-radius:20px;font-size:12px;font-family:system-ui,-apple-system,sans-serif;z-index:9000;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;}',
+
+    /* ── Hint toast ── */
+    '#wf-hint{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:8px 16px;border-radius:20px;font-size:12px;font-family:system-ui,-apple-system,sans-serif;z-index:9000;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;border:1px solid #2a2a2a;}',
     '#wf-hint.visible{opacity:1;}'
-  ].join('\n');
+
+  ].join('');
   document.head.appendChild(style);
 
   // ── State ──
   var commentMode = false;
-  var comments = [];
-  var pendingX = 0;
-  var pendingY = 0;
+  var comments    = [];
+  var pendingX    = 0;
+  var pendingY    = 0;
   var activeBubble = null;
-  var PAGE_ID = '';
+  var PAGE_ID      = '';
 
   // ── Persist ──
   function loadComments() {
-    try {
-      var stored = localStorage.getItem('wf-comments-' + PAGE_ID);
-      if (stored) comments = JSON.parse(stored);
-    } catch(e) {}
+    try { var s = localStorage.getItem('wf-comments-' + PAGE_ID); if (s) comments = JSON.parse(s); } catch(e) {}
   }
   function saveComments() {
-    try {
-      localStorage.setItem('wf-comments-' + PAGE_ID, JSON.stringify(comments));
-    } catch(e) {}
+    try { localStorage.setItem('wf-comments-' + PAGE_ID, JSON.stringify(comments)); } catch(e) {}
   }
 
   // ── Toggle comment mode ──
@@ -94,7 +160,7 @@
   function showInputPopup(clientX, clientY) {
     var popup = document.getElementById('wf-input-popup');
     popup.style.left = Math.min(clientX, window.innerWidth - 260) + 'px';
-    popup.style.top = Math.min(clientY + 8, window.innerHeight - 180) + 'px';
+    popup.style.top  = Math.min(clientY + 8, window.innerHeight - 180) + 'px';
     popup.classList.add('visible');
     document.getElementById('wf-input-text').focus();
   }
@@ -102,22 +168,19 @@
     document.getElementById('wf-input-popup').classList.remove('visible');
     document.getElementById('wf-input-text').value = '';
   }
-  function cancelComment() {
-    closeInputPopup();
-    if (commentMode) toggleCommentMode();
-  }
+  function cancelComment() { closeInputPopup(); if (commentMode) toggleCommentMode(); }
   function saveComment() {
     var text = document.getElementById('wf-input-text').value.trim();
     var name = document.getElementById('wf-input-name').value.trim() || 'Anonymous';
     if (!text) { document.getElementById('wf-input-text').focus(); return; }
-    var comment = { id: Date.now(), x: pendingX, y: pendingY, text: text, name: name, num: comments.length + 1 };
-    comments.push(comment);
+    var c = { id: Date.now(), x: pendingX, y: pendingY, text: text, name: name, num: comments.length + 1 };
+    comments.push(c);
     saveComments();
-    renderPin(comment);
+    renderPin(c);
     updateCount();
     closeInputPopup();
     if (commentMode) toggleCommentMode();
-    showHint('Comment #' + comment.num + ' saved');
+    showHint('Comment #' + c.num + ' saved');
   }
 
   // ── Render pin ──
@@ -126,18 +189,16 @@
   }
   function renderPin(c) {
     var page = document.getElementById('wf-page');
-    var pin = document.createElement('div');
-    pin.className = 'wf-pin';
-    pin.dataset.id = c.id;
-    pin.style.left = (c.x - 14) + 'px';
-    pin.style.top  = (c.y - 28) + 'px';
-    pin.innerHTML  = '<span class="pin-num">' + c.num + '</span>';
-    pin.addEventListener('click', function(e) {
-      e.stopPropagation();
-      toggleBubble(c);
-    });
+    var pin  = document.createElement('div');
+    pin.className   = 'wf-pin';
+    pin.dataset.id  = c.id;
+    pin.style.left  = (c.x - 14) + 'px';
+    pin.style.top   = (c.y - 28) + 'px';
+    pin.innerHTML   = '<span class="pin-num">' + c.num + '</span>';
+    pin.addEventListener('click', function(e) { e.stopPropagation(); toggleBubble(c); });
+
     var bubble = document.createElement('div');
-    bubble.className = 'wf-bubble';
+    bubble.className  = 'wf-bubble';
     bubble.dataset.id = c.id;
     bubble.style.left = (c.x + 16) + 'px';
     bubble.style.top  = (c.y - 28) + 'px';
@@ -162,8 +223,8 @@
     activeBubble = bubble.classList.contains('visible') ? bubble : null;
   }
   function closeBubble(id) {
-    var bubble = document.querySelector('.wf-bubble[data-id="' + id + '"]');
-    if (bubble) bubble.classList.remove('visible');
+    var b = document.querySelector('.wf-bubble[data-id="' + id + '"]');
+    if (b) b.classList.remove('visible');
     activeBubble = null;
   }
   function deleteComment(id) {
@@ -182,21 +243,16 @@
     if (panel.classList.contains('visible')) buildExportText();
   }
   function buildExportText() {
-    var page = document.title;
     var date = new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
-    var divider = '----------------------------------------';
-    var text = page + ' — Wireframe Feedback\n' + date + '\n' + divider + '\n\n';
-    if (comments.length === 0) {
-      text += '(No comments yet)';
-    } else {
-      comments.forEach(function(c) { text += '#' + c.num + ' — ' + c.name + '\n' + c.text + '\n\n'; });
-    }
+    var text = document.title + ' — Wireframe Feedback\n' + date + '\n' + '----------------------------------------\n\n';
+    text += comments.length === 0 ? '(No comments yet)' : comments.map(function(c) {
+      return '#' + c.num + ' — ' + c.name + '\n' + c.text;
+    }).join('\n\n');
     document.getElementById('wf-export-text').value = text.trim();
   }
   function copyComments() {
     var ta = document.getElementById('wf-export-text');
-    ta.select();
-    document.execCommand('copy');
+    ta.select(); document.execCommand('copy');
     var btn = document.getElementById('wf-copy-btn');
     btn.textContent = 'Copied ✓';
     setTimeout(function() { btn.textContent = 'Copy to clipboard'; }, 2000);
@@ -215,30 +271,36 @@
     if (msg) setTimeout(function() { hint.classList.remove('visible'); }, 3000);
   }
 
-  // ── Init on DOMContentLoaded ──
+  // ── Init ──
   document.addEventListener('DOMContentLoaded', function() {
     PAGE_ID = document.title.replace(/\s+/g, '-').toLowerCase();
 
-    // Wrap all existing body children in #wf-page
+    // Wrap all body children (header + main + footer from navigation.js) in #wf-page.wrapper
     var page = document.createElement('div');
-    page.id = 'wf-page';
-    while (document.body.firstChild) {
-      page.appendChild(document.body.firstChild);
-    }
+    page.id        = 'wf-page';
+    page.className = 'wrapper';
+    while (document.body.firstChild) { page.appendChild(document.body.firstChild); }
     document.body.appendChild(page);
 
-    // Toolbar
+    // Toolbar — combined banner + comment controls
     var toolbar = document.createElement('div');
     toolbar.id = 'wf-toolbar';
     toolbar.innerHTML =
-      '<span class="wf-tb-title">' + escHtml(document.title) +
-        ' <span class="wf-tb-meta">/ wireframe prototype</span></span>' +
-      '<span id="wf-comment-count"></span>' +
-      '<button id="wf-mode-toggle">+ Add Comment</button>' +
-      '<button id="wf-export-btn">Export Comments</button>';
+      '<div class="wf-tb-left">' +
+        '<span class="wf-tb-badge">Proto</span>' +
+        '<span class="wf-tb-title">' + escHtml(document.title) + '</span>' +
+        '<div class="wf-tb-divider"></div>' +
+        '<a href="' + BASE + 'happs-sitemap.html" class="wf-tb-nav-btn">Proposed Sitemap</a>' +
+        '<a href="' + BASE + 'sitemap.html" class="wf-tb-nav-btn">All Pages</a>' +
+      '</div>' +
+      '<div class="wf-tb-right">' +
+        '<span id="wf-comment-count"></span>' +
+        '<button id="wf-mode-toggle">+ Add Comment</button>' +
+        '<button id="wf-export-btn">Export</button>' +
+      '</div>';
     document.body.insertBefore(toolbar, page);
 
-    // Input popup
+    // Comment input popup
     var popup = document.createElement('div');
     popup.id = 'wf-input-popup';
     popup.innerHTML =
@@ -258,7 +320,7 @@
     exportPanel.innerHTML =
       '<span id="wf-export-close">✕</span>' +
       '<h3>Export Comments</h3>' +
-      '<p>Copy this and paste into Slack or email.</p>' +
+      '<p>Copy and paste into Slack or email.</p>' +
       '<textarea id="wf-export-text" readonly></textarea>' +
       '<button id="wf-copy-btn">Copy to clipboard</button>';
     document.body.appendChild(exportPanel);
@@ -268,7 +330,7 @@
     hint.id = 'wf-hint';
     document.body.appendChild(hint);
 
-    // Wire up buttons
+    // Wire up
     document.getElementById('wf-mode-toggle').addEventListener('click', toggleCommentMode);
     document.getElementById('wf-export-btn').addEventListener('click', toggleExport);
     document.getElementById('wf-input-cancel').addEventListener('click', cancelComment);
@@ -276,7 +338,7 @@
     document.getElementById('wf-export-close').addEventListener('click', toggleExport);
     document.getElementById('wf-copy-btn').addEventListener('click', copyComments);
 
-    // Page click → place pin
+    // Page click → drop pin
     page.addEventListener('click', function(e) {
       if (!commentMode) return;
       if (e.target.closest('.wf-pin') || e.target.closest('#wf-input-popup')) return;
@@ -295,7 +357,6 @@
       }
     });
 
-    // Load saved comments
     loadComments();
     comments.forEach(renderPin);
     updateCount();
