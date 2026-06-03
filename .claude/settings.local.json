@@ -8,7 +8,9 @@
       "Bash(git push *)",
       "Bash(gh auth *)",
       "Bash(ssh -T git@github.com)",
-      "Bash(ls ~/.ssh/*.pub 2>/dev/null && echo \"SSH keys found\" || echo \"No SSH keys\")"
+      "Bash(ls ~/.ssh/*.pub 2>/dev/null && echo \"SSH keys found\" || echo \"No SSH keys\")",
+      "Bash(mkdir -p experiences blog page/programs landing-page policy)",
+      "Bash(git mv *)"
     ]
   }
 }
