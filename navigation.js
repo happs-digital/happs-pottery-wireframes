@@ -191,9 +191,10 @@
       cta:        { label: 'Book a session', href: root + 'page/book.html' },
       storageKey: 'wf-promo-dismissed-v1'
     };
-    if (PROMO.enabled && !localStorage.getItem(PROMO.storageKey)) {
+    if (PROMO.enabled) {
       var promo = document.createElement('div');
       promo.className = 'wf-promo';
+      if (localStorage.getItem(PROMO.storageKey)) promo.classList.add('wf-promo-hidden');
       promo.innerHTML =
         '<button class="wf-promo-close" aria-label="Close">✕</button>' +
         '<div class="wf-promo-image">' + PROMO.image + '</div>' +
@@ -204,9 +205,23 @@
           '<a href="' + PROMO.cta.href + '" class="wf-promo-cta">' + PROMO.cta.label + '</a>' +
         '</div>';
       body.appendChild(promo);
+
+      var reopenBtn = document.createElement('button');
+      reopenBtn.className = 'wf-promo-reopen' + (localStorage.getItem(PROMO.storageKey) ? ' visible' : '');
+      reopenBtn.setAttribute('aria-label', 'Reopen promo');
+      reopenBtn.setAttribute('title', 'Show promo');
+      reopenBtn.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="7 17 17 7"/><polyline points="7 7 17 7 17 17"/></svg>';
+      body.appendChild(reopenBtn);
+
       promo.querySelector('.wf-promo-close').addEventListener('click', function () {
         promo.classList.add('wf-promo-hidden');
+        reopenBtn.classList.add('visible');
         try { localStorage.setItem(PROMO.storageKey, '1'); } catch(e) {}
+      });
+      reopenBtn.addEventListener('click', function () {
+        promo.classList.remove('wf-promo-hidden');
+        reopenBtn.classList.remove('visible');
+        try { localStorage.removeItem(PROMO.storageKey); } catch(e) {}
       });
     }
 

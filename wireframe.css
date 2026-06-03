@@ -384,6 +384,30 @@ footer.wf-footer {
   transition: opacity 0.25s, transform 0.25s;
 }
 .wf-promo.wf-promo-hidden { opacity: 0; pointer-events: none; transform: translateY(8px); }
+
+.wf-promo-reopen {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  cursor: pointer;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.15s;
+  transform: translateY(4px);
+}
+.wf-promo-reopen.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.wf-promo-reopen:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+.wf-promo-reopen svg { width: 18px; height: 18px; stroke: #444; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .wf-promo-image { background: #e8e8e8; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #aaa; }
 .wf-promo-body { padding: 16px; }
 .wf-promo-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; display: block; margin-bottom: 6px; }
