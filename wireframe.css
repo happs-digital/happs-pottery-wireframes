@@ -30,7 +30,7 @@ ul { padding-left: 1.25rem; }
 header.wf-header {
   background: #fff;
   position: sticky;
-  top: 44px;
+  top: 52px;
   z-index: 100;
   width: 100%;
 }
@@ -82,7 +82,7 @@ main {
 }
 
 /* ── Layout blocks ── */
-.wf-section { display: block; padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+.wf-section { display: block; padding: 60px 0; border-bottom: 1px solid #eee; }
 main > .wf-section:last-child { border-bottom: none; }
 .wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
 .wf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -178,7 +178,7 @@ main > .wf-section:last-child { border-bottom: none; }
 
 /* ── Footer — full viewport width, content capped at 1440px ── */
 footer.wf-footer {
-  background: #f5f5f5;
+  background: #e0e0e0;
   margin-top: 3rem;
   font-size: 13px;
   color: #666;
@@ -187,7 +187,7 @@ footer.wf-footer {
 .wf-footer-inner {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 4rem 1.5rem 2rem;
 }
 .wf-footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 2rem; }
 .wf-footer-social { display: flex; gap: 10px; margin-top: 0.75rem; }
