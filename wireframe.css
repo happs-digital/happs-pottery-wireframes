@@ -66,11 +66,7 @@ nav.wf-nav a:hover { color: #666; }
 
 /* Breadcrumb — inside header */
 .wf-breadcrumb {
-  font-size: 12px;
-  color: #888;
-  padding: 7px 1.5rem;
-  background: #f5f5f5;
-  margin: 0 -1.5rem;
+  display: none;
 }
 
 /* Main content — full width, sections handle their own padding */
@@ -87,6 +83,7 @@ main {
 
 /* ── Layout blocks ── */
 .wf-section { display: block; padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+main > .wf-section:last-child { border-bottom: none; }
 .wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 .wf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .wf-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
