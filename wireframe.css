@@ -1,0 +1,197 @@
+/* Happs Pottery Wireframe Prototype — wireframe.css */
+/* Strict greyscale only — no colour anywhere */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #fff;
+  color: #222;
+  font-family: system-ui, -apple-system, sans-serif;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Typography */
+h1 { font-size: 28px; font-weight: 600; color: #111; margin-bottom: 1rem; }
+h2 { font-size: 20px; font-weight: 600; color: #222; border-bottom: 1px solid #ddd; padding-bottom: 8px; margin-bottom: 1rem; }
+h3 { font-size: 16px; font-weight: 600; color: #333; margin-bottom: 0.5rem; }
+p, li { font-size: 15px; line-height: 1.6; color: #444; }
+ul { padding-left: 1.25rem; }
+
+/* Layout blocks */
+.wf-section { display: block; padding: 2.5rem 0; border-bottom: 1px solid #eee; }
+.wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.wf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.wf-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+/* Wireframe components */
+.wf-box {
+  background: #f5f5f5;
+  border: 1px dashed #bbb;
+  border-radius: 4px;
+  padding: 1.5rem;
+  color: #666;
+}
+.wf-image {
+  background: #e8e8e8;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 13px;
+  min-height: 200px;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+.wf-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+.wf-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #999;
+  display: block;
+  margin-bottom: 8px;
+}
+.wf-placeholder {
+  background: #f0f0f0;
+  border: 1px dashed #ccc;
+  color: #aaa;
+  font-size: 13px;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+/* Buttons */
+.wf-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 0.75rem;
+}
+.wf-btn-outline {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #fff;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 0.75rem;
+}
+
+/* Forms */
+.wf-form label { display: block; font-size: 13px; color: #555; margin-bottom: 4px; }
+.wf-form input,
+.wf-form textarea,
+.wf-form select {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  background: #fafafa;
+  color: #222;
+  font-family: inherit;
+}
+.wf-form textarea { min-height: 100px; resize: vertical; }
+
+/* Navigation (injected by navigation.js) */
+nav.wf-nav {
+  background: #222;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  /* full-bleed: override body max-width */
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
+nav.wf-nav a { color: #fff; text-decoration: none; font-size: 14px; padding: 0 12px; }
+nav.wf-nav a.active { border-bottom: 2px solid #fff; }
+nav.wf-nav a:hover { color: #ccc; }
+.wf-nav-brand { color: #fff; font-weight: 600; font-size: 15px; white-space: nowrap; }
+.wf-nav-links { display: flex; align-items: center; }
+.wf-nav-badge {
+  font-size: 11px;
+  background: #555;
+  color: #ccc;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+/* Prototype banner */
+.wf-banner {
+  background: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 0.05em;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
+
+/* Breadcrumb */
+.wf-breadcrumb {
+  font-size: 12px;
+  color: #999;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0;
+}
+
+/* Footer */
+footer.wf-footer {
+  border-top: 2px solid #222;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  font-size: 13px;
+  color: #666;
+}
+.wf-footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.wf-footer a { color: #555; text-decoration: none; }
+.wf-footer a:hover { text-decoration: underline; }
+.wf-footer h4 { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 0.75rem; }
+.wf-footer ul { list-style: none; padding: 0; }
+.wf-footer ul li { margin-bottom: 0.4rem; }
+.wf-footer-note {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .wf-grid-2,
+  .wf-grid-3,
+  .wf-grid-4 { grid-template-columns: 1fr; }
+  nav.wf-nav { flex-wrap: wrap; height: auto; padding: 0.75rem 1rem; }
+  .wf-nav-links { flex-wrap: wrap; gap: 0.25rem; }
+  .wf-footer-grid { grid-template-columns: 1fr; }
+}
