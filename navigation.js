@@ -119,5 +119,51 @@
       '</div>'
     ].join('');
     body.appendChild(footer);
+
+    // ── 4. Floating "Book a Class" tab ──
+    var bookTab = document.createElement('div');
+    bookTab.className = 'wf-book-tab';
+    bookTab.innerHTML = '<a href="' + root + 'page/book.html">Book a Session</a>';
+    body.appendChild(bookTab);
+
+    // ── 5. Promo popup — bottom left ──
+    // Edit PROMO object to customise content
+    var PROMO = {
+      enabled:    true,
+      badge:      'Open Studios 2026',
+      heading:    'Book now for 12–27 September',
+      body:       'Limited experience sessions available during Open Studios. Early bookings recommended.',
+      image:      '[ Promo image ]',
+      cta:        { label: 'Book a session', href: root + 'page/book.html' },
+      storageKey: 'wf-promo-dismissed-v1'
+    };
+    if (PROMO.enabled && !localStorage.getItem(PROMO.storageKey)) {
+      var promo = document.createElement('div');
+      promo.className = 'wf-promo';
+      promo.innerHTML =
+        '<button class="wf-promo-close" aria-label="Close">✕</button>' +
+        '<div class="wf-promo-image">' + PROMO.image + '</div>' +
+        '<div class="wf-promo-body">' +
+          '<span class="wf-promo-badge">' + PROMO.badge + '</span>' +
+          '<div class="wf-promo-heading">' + PROMO.heading + '</div>' +
+          '<p class="wf-promo-text">' + PROMO.body + '</p>' +
+          '<a href="' + PROMO.cta.href + '" class="wf-promo-cta">' + PROMO.cta.label + '</a>' +
+        '</div>';
+      body.appendChild(promo);
+      promo.querySelector('.wf-promo-close').addEventListener('click', function () {
+        promo.classList.add('wf-promo-hidden');
+        try { localStorage.setItem(PROMO.storageKey, '1'); } catch(e) {}
+      });
+    }
+
+    // ── 6. Chat button — bottom right ──
+    var chatBtn = document.createElement('a');
+    chatBtn.className = 'wf-chat-btn';
+    chatBtn.href = root + 'page/contact.html';
+    chatBtn.title = 'Chat with us';
+    chatBtn.setAttribute('aria-label', 'Chat with us');
+    chatBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>';
+    body.appendChild(chatBtn);
+
   });
 })();
