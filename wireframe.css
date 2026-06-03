@@ -13,6 +13,9 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
 }
 
+a { color: #444; }
+a:hover { color: #111; }
+
 /* ── Typography ── */
 h1 { font-size: 36px; font-weight: 600; color: #111; margin-bottom: 1rem; }
 h2 { font-size: 28px; font-weight: 600; color: #222; margin-bottom: 1rem; }
