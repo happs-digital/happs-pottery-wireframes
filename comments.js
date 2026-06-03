@@ -127,12 +127,13 @@
   document.head.appendChild(style);
 
   // ── State ──
-  var commentMode = false;
-  var comments    = [];
-  var pendingX    = 0;
-  var pendingY    = 0;
-  var activeBubble = null;
-  var PAGE_ID      = '';
+  var commentMode   = false;
+  var comments      = [];
+  var pendingX      = 0;
+  var pendingY      = 0;
+  var pendingSection = '';
+  var activeBubble  = null;
+  var PAGE_ID       = '';
 
   // ── Persist ──
   function loadComments() {
@@ -140,6 +141,29 @@
   }
   function saveComments() {
     try { localStorage.setItem('wf-comments-' + PAGE_ID, JSON.stringify(comments)); } catch(e) {}
+  }
+
+  // ── Section detection ──
+  function getSectionLabel(clientX, clientY) {
+    var el = document.elementFromPoint(clientX, clientY);
+    while (el && el !== document.body) {
+      if (el.classList && (el.classList.contains('wf-section') || el.tagName === 'SECTION')) {
+        var heading = el.querySelector('h1, h2, h3');
+        if (heading) return heading.textContent.trim();
+      }
+      el = el.parentElement;
+    }
+    // Fallback: find the last heading whose top is above the click point
+    var allHeadings = document.querySelectorAll('h1, h2, h3');
+    var page = document.getElementById('wf-page');
+    var pageTop = page ? page.getBoundingClientRect().top : 0;
+    var clickPageY = clientY - pageTop;
+    var best = null;
+    allHeadings.forEach(function(h) {
+      var hTop = h.getBoundingClientRect().top - pageTop;
+      if (hTop <= clickPageY) best = h.textContent.trim();
+    });
+    return best || '';
   }
 
   // ── Toggle comment mode ──
@@ -169,7 +193,7 @@
     var text = document.getElementById('wf-input-text').value.trim();
     var name = document.getElementById('wf-input-name').value.trim() || 'Anonymous';
     if (!text) { document.getElementById('wf-input-text').focus(); return; }
-    var c = { id: Date.now(), x: pendingX, y: pendingY, text: text, name: name, num: comments.length + 1 };
+    var c = { id: Date.now(), x: pendingX, y: pendingY, text: text, name: name, num: comments.length + 1, section: pendingSection };
     comments.push(c);
     saveComments();
     renderPin(c);
@@ -240,10 +264,41 @@
   }
   function buildExportText() {
     var date = new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
-    var text = document.title + ' — Wireframe Feedback\n' + date + '\n' + '----------------------------------------\n\n';
-    text += comments.length === 0 ? '(No comments yet)' : comments.map(function(c) {
-      return '#' + c.num + ' — ' + c.name + '\n' + c.text;
-    }).join('\n\n');
+    var text = 'Happs Pottery Wireframe — All Feedback\n' + date + '\n' + '========================================\n\n';
+
+    // Collect all wf-comments-* keys from localStorage
+    var pages = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (key && key.indexOf('wf-comments-') === 0) {
+        var pageName = key.replace('wf-comments-', '');
+        try {
+          var stored = JSON.parse(localStorage.getItem(key));
+          if (stored && stored.length > 0) pages.push({ name: pageName, comments: stored });
+        } catch(e) {}
+      }
+    }
+
+    // Current page first, then alphabetical
+    pages.sort(function(a, b) {
+      if (a.name === PAGE_ID) return -1;
+      if (b.name === PAGE_ID) return 1;
+      return a.name.localeCompare(b.name);
+    });
+
+    if (pages.length === 0) {
+      text += '(No comments on any page yet)';
+    } else {
+      text += pages.map(function(p) {
+        var heading = p.name + '\n' + '----------------------------------------\n';
+        var body = p.comments.map(function(c) {
+          var loc = c.section ? 'Section: ' + c.section + '\n' : '';
+          return '#' + c.num + ' — ' + c.name + '\n' + loc + c.text;
+        }).join('\n\n');
+        return heading + body;
+      }).join('\n\n\n');
+    }
+
     document.getElementById('wf-export-text').value = text.trim();
   }
   function copyComments() {
@@ -316,7 +371,7 @@
     exportPanel.innerHTML =
       '<span id="wf-export-close">✕</span>' +
       '<h3>Export Comments</h3>' +
-      '<p>Copy and paste into Slack or email.</p>' +
+      '<p>All pages with comments, combined. Copy and paste into Slack or email.</p>' +
       '<textarea id="wf-export-text" readonly></textarea>' +
       '<button id="wf-copy-btn">Copy to clipboard</button>';
     document.body.appendChild(exportPanel);
@@ -342,6 +397,7 @@
       var rect = page.getBoundingClientRect();
       pendingX = e.clientX - rect.left;
       pendingY = e.clientY - rect.top;
+      pendingSection = getSectionLabel(e.clientX, e.clientY);
       showInputPopup(e.clientX, e.clientY);
     });
 
