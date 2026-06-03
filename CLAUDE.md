@@ -136,6 +136,14 @@ Myles Happ is the founder and head potter, but other staff also make pieces to H
 - Items pending confirmation from Myles are marked `<strong>(confirm with Myles)</strong>` inside placeholder text
 - Items pending a decision are marked `<strong>(decision outstanding)</strong>`
 
+### Open Studios — scope restriction
+Open Studios and the demo session event are **temporary and seasonal** (September, MRROS only). References to Open Studios and demos must only appear in:
+- `landing-page/open-studios.html`
+- `blog/` articles
+- Temporary promo popups (injected via navigation.js)
+
+**Do not mention Open Studios or demo sessions in standard/static pages** — including experiences/index.html, page/visit.html, page/what-we-do.html, page/contact.html, index.html, page/about.html, shop pages, or any other evergreen page. These pages are live year-round; Open Studios content will be stale for 11 months of the year.
+
 ### Tone
 Avoid AI-flavoured phrasing. No em dashes used for rhetorical effect. Short sentences. Active language.
 
@@ -146,8 +154,9 @@ Avoid AI-flavoured phrasing. No em dashes used for rhetorical effect. Short sent
 - **Studio:** Happs Pottery, 749 Caves Road, Anniebrook (Dunsborough area), WA 6281
 - **Open:** Daily 10am–4pm (hours may vary for events)
 - **Core products:** Wheel-thrown and hand-built ceramics in 5 signature glazes (Shore Break, Bunker Bay, Desert Days, Wyadup Stone, Emerald)
-- **Experiences:** Studio Pottery Experience $69/person, 1.5hrs; Open Studios demo sessions $10/person
-- **Key segments:** General visitors, school groups, corporate gifting, Open Studios (MRROS — Margaret River Region Open Studios, September)
+- **Experiences:** Studio Pottery Experience $69/person, 1.5hrs (the core year-round offer)
+- **Open Studios:** Seasonal event — MRROS (Margaret River Region Open Studios), September only. Demo sessions $10/person, led by Myles. Content about this lives only in the landing page, blog, and temporary promo popups — not in standard site pages.
+- **Key segments:** General visitors, school groups, corporate gifting
 - **CRM:** GoHighLevel — enquiry forms feed into GHL
 - **Booking:** TryBooking or Eventbrite (decision outstanding)
 
