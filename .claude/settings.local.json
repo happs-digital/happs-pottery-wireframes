@@ -16,7 +16,16 @@
       "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" push origin main)",
       "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" remote set-url origin git@github.com:happs-digital/happs-pottery-wireframes.git)",
       "Bash(ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null && git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" push origin main)",
-      "Bash(ssh-keyscan github.com)"
+      "Bash(ssh-keyscan github.com)",
+      "WebFetch(domain:happs-digital.github.io)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" add page/visit.html page/what-we-do.html .claude/launch.json)",
+      "Bash(git -C '/Users/amber/Local Sites/Happs Pottery Wireframes' commit -m ' *)",
+      "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" push)",
+      "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" add wireframe.css page/contact.html experiences/index.html)",
+      "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" add comments.js)",
+      "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" add CLAUDE.md experiences/index.html page/visit.html page/what-we-do.html page/contact.html page/faq.html index.html)",
+      "Bash(git -C \"/Users/amber/Local Sites/Happs Pottery Wireframes\" add -A)"
     ]
   }
 }

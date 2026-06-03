@@ -153,7 +153,7 @@ Avoid AI-flavoured phrasing. No em dashes used for rhetorical effect. Short sent
 
 - **Studio:** Happs Pottery, 749 Caves Road, Anniebrook (Dunsborough area), WA 6281
 - **Open:** Daily 10am–4pm (hours may vary for events)
-- **Core products:** Wheel-thrown and hand-built ceramics in 5 signature glazes (Shore Break, Bunker Bay, Desert Days, Wyadup Stone, Emerald)
+- **Core products:** Wheel-thrown and hand-built ceramics in 8 signature glazes: Shore Break, Bunker Bay, Desert Days, Wyadup Stone, Emerald, Farmhouse, Summer Days, Jacaranda
 - **Experiences:** Studio Pottery Experience $69/person, 1.5hrs (the core year-round offer)
 - **Open Studios:** Seasonal event — MRROS (Margaret River Region Open Studios), September only. Demo sessions $10/person, led by Myles. Content about this lives only in the landing page, blog, and temporary promo popups — not in standard site pages.
 - **Key segments:** General visitors, school groups, corporate gifting
