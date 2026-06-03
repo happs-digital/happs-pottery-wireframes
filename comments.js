@@ -75,6 +75,7 @@
     '#wf-export-btn:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.6);}',
 
     /* ── Page wrapper — layout handled in wireframe.css ── */
+    '#wf-page{position:relative;}',
     'body.comment-mode #wf-page{cursor:crosshair;}',
     'body.comment-mode #wf-mode-toggle{background:#f5c842;color:#111;}',
 
@@ -340,7 +341,7 @@
       closeInputPopup();
       var rect = page.getBoundingClientRect();
       pendingX = e.clientX - rect.left;
-      pendingY = e.clientY - rect.top + window.scrollY;
+      pendingY = e.clientY - rect.top;
       showInputPopup(e.clientX, e.clientY);
     });
 
