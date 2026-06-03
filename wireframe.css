@@ -54,8 +54,11 @@ nav.wf-nav a:hover { color: #666; }
 .wf-nav-brand { color: #111; font-weight: 600; font-size: 15px; white-space: nowrap; }
 .wf-nav-links { display: flex; align-items: center; justify-content: center; }
 .wf-nav-actions { display: flex; align-items: center; justify-content: flex-end; gap: 4px; }
-.wf-nav-actions a { padding: 6px 8px; display: flex; align-items: center; }
-.wf-nav-actions svg { width: 18px; height: 18px; stroke: #444; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.wf-nav-actions a,
+.wf-nav-icon-btn { padding: 6px 8px; display: flex; align-items: center; background: none; border: none; cursor: pointer; }
+.wf-nav-actions svg,
+.wf-nav-icon-btn svg { width: 18px; height: 18px; stroke: #444; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.wf-nav-icon-btn:hover svg { stroke: #111; }
 .wf-nav-badge {
   font-size: 11px;
   background: #777;
@@ -199,14 +202,125 @@ footer.wf-footer {
 .wf-footer h4 { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 0.75rem; }
 .wf-footer ul { list-style: none; padding: 0; }
 .wf-footer ul li { margin-bottom: 0.4rem; }
+.wf-footer-acknowledgement {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ccc;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #777;
+  max-width: 760px;
+}
 .wf-footer-note {
   font-size: 11px;
   color: #aaa;
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #ccc;
   text-align: center;
 }
+
+/* ── Search overlay ── */
+#wf-search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.96);
+  z-index: 9000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+#wf-search-overlay.wf-search-open {
+  opacity: 1;
+  pointer-events: all;
+}
+.wf-search-inner {
+  width: 100%;
+  max-width: 680px;
+  padding: 0 1.5rem;
+  position: relative;
+}
+.wf-search-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+.wf-search-close:hover { color: #fff; }
+.wf-search-label {
+  font-size: 13px;
+  color: #666;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.wf-search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #444;
+  transition: border-color 0.2s;
+}
+.wf-search-input-wrap:focus-within { border-color: #fff; }
+.wf-search-input-icon {
+  width: 22px;
+  height: 22px;
+  stroke: #666;
+  flex-shrink: 0;
+  margin-right: 14px;
+  transition: stroke 0.2s;
+}
+.wf-search-input-wrap:focus-within .wf-search-input-icon { stroke: #ccc; }
+.wf-search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 32px;
+  font-weight: 300;
+  color: #fff;
+  padding: 10px 0 14px;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+}
+.wf-search-input::placeholder { color: #444; }
+.wf-search-suggestions {
+  margin-top: 2rem;
+}
+.wf-search-suggestions-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.wf-search-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.wf-search-pill {
+  font-size: 13px;
+  color: #aaa;
+  border: 1px solid #333;
+  border-radius: 999px;
+  padding: 6px 16px;
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.wf-search-pill:hover { color: #fff; border-color: #777; background: rgba(255,255,255,0.05); }
 
 /* ── Persistent UI chrome (injected by navigation.js) ── */
 

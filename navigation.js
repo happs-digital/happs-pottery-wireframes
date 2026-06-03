@@ -52,7 +52,7 @@
             '<a href="' + root + 'page/contact.html" data-page="page/contact.html">Contact</a>',
           '</div>',
           '<div class="wf-nav-actions">',
-            '<a href="' + root + 'shop/index.html" title="Search">' + ICON_SEARCH + '</a>',
+            '<button id="wf-search-trigger" class="wf-nav-icon-btn" title="Search" aria-label="Open search">' + ICON_SEARCH + '</button>',
             '<a href="' + root + 'shop/account.html" title="Account">' + ICON_ACCOUNT + '</a>',
             '<a href="' + root + 'shop/cart.html" title="Cart">' + ICON_CART + '</a>',
           '</div>',
@@ -75,8 +75,9 @@
             '<ul>',
               '<li>749 Caves Road</li>',
               '<li>Dunsborough WA 6281</li>',
-              '<li style="margin-top:0.5rem;"><a href="tel:+61XXXXXXXXX">[ Phone TBC ]</a></li>',
-              '<li><a href="mailto:hello@happspottery.com.au">[ Email TBC ]</a></li>',
+              '<li style="margin-top:0.5rem;">Open daily 10am – 4pm</li>',
+              '<li style="margin-top:0.5rem;"><a href="tel:0401533336">0401 533 336</a></li>',
+              '<li><a href="mailto:shop@happspottery.com.au">shop@happspottery.com.au</a></li>',
             '</ul>',
             '<div class="wf-footer-social">',
               '<a href="#" title="Instagram" aria-label="Instagram">' + ICON_INSTAGRAM + '</a>',
@@ -115,10 +116,63 @@
             '</ul>',
           '</div>',
         '</div>',
+        '<div class="wf-footer-acknowledgement">',
+          '<p>We acknowledge the Wadandi People as the First Nations People of this land we proudly call home, that we live, work and play on. We respect deeply the Elders that have passed, that we are privileged to work and share time with; and acknowledge the rising leaders in the community.</p>',
+        '</div>',
         '<p class="wf-footer-note">Happs Pottery Wireframe Prototype — for internal review only · happspottery.com.au</p>',
       '</div>'
     ].join('');
     body.appendChild(footer);
+
+    // ── Search overlay ──
+    var searchOverlay = document.createElement('div');
+    searchOverlay.id = 'wf-search-overlay';
+    searchOverlay.setAttribute('aria-hidden', 'true');
+    searchOverlay.innerHTML = [
+      '<div class="wf-search-inner">',
+        '<button class="wf-search-close" id="wf-search-close" aria-label="Close search">',
+          '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+        '</button>',
+        '<p class="wf-search-label">What are you looking for?</p>',
+        '<div class="wf-search-input-wrap">',
+          '<svg class="wf-search-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>',
+          '<input id="wf-search-input" class="wf-search-input" type="search" placeholder="Search experiences, pottery, glazes…" autocomplete="off" />',
+        '</div>',
+        '<div class="wf-search-suggestions">',
+          '<span class="wf-search-suggestions-label">Suggested</span>',
+          '<div class="wf-search-pills">',
+            '<a href="' + root + 'page/book.html" class="wf-search-pill">Book an experience</a>',
+            '<a href="' + root + 'shop/index.html" class="wf-search-pill">Shop pottery</a>',
+            '<a href="' + root + 'landing-page/open-studios.html" class="wf-search-pill">Open Studios 2026</a>',
+            '<a href="' + root + 'landing-page/schools.html" class="wf-search-pill">School groups</a>',
+            '<a href="' + root + 'landing-page/corporate.html" class="wf-search-pill">Corporate gifts</a>',
+            '<a href="' + root + 'page/visit.html" class="wf-search-pill">Visit the studio</a>',
+            '<a href="' + root + 'page/faq.html" class="wf-search-pill">FAQ</a>',
+          '</div>',
+        '</div>',
+      '</div>',
+    ].join('');
+    body.appendChild(searchOverlay);
+
+    function openSearch() {
+      searchOverlay.classList.add('wf-search-open');
+      searchOverlay.setAttribute('aria-hidden', 'false');
+      document.getElementById('wf-search-input').focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSearch() {
+      searchOverlay.classList.remove('wf-search-open');
+      searchOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('wf-search-trigger').addEventListener('click', openSearch);
+    document.getElementById('wf-search-close').addEventListener('click', closeSearch);
+    searchOverlay.addEventListener('click', function(e) {
+      if (e.target === searchOverlay) closeSearch();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeSearch();
+    });
 
     // ── 4. Floating "Book a Class" tab ──
     var bookTab = document.createElement('div');
