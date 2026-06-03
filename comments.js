@@ -74,6 +74,35 @@
     '}',
     '#wf-export-btn:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.6);}',
 
+    '#wf-help-btn{',
+      'background:transparent;color:rgba(255,255,255,0.7);',
+      'border:1px solid rgba(255,255,255,0.3);border-radius:50%;',
+      'width:28px;height:28px;font-size:13px;font-weight:700;',
+      'cursor:pointer;transition:background 0.15s,color 0.15s,border-color 0.15s;',
+      'flex-shrink:0;font-family:inherit;line-height:1;',
+      'display:flex;align-items:center;justify-content:center;',
+    '}',
+    '#wf-help-btn:hover{background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.6);}',
+
+    /* ── Help popup ── */
+    '#wf-help-popup{',
+      'position:fixed;top:62px;right:16px;',
+      'background:#fff;border:1.5px solid #1a1a1a;border-radius:8px;',
+      'padding:20px;width:300px;',
+      'z-index:9000;box-shadow:3px 3px 0 #1a1a1a;',
+      'display:none;font-family:system-ui,-apple-system,sans-serif;',
+      'font-size:12px;line-height:1.6;color:#1a1a1a;',
+    '}',
+    '#wf-help-popup.visible{display:block;}',
+    '#wf-help-popup h3{font-size:13px;font-weight:700;margin:0 0 12px;padding-right:16px;}',
+    '#wf-help-popup p{margin:0 0 10px;color:#444;}',
+    '#wf-help-popup p:last-of-type{margin-bottom:0;}',
+    '#wf-help-popup strong{color:#1a1a1a;font-weight:600;}',
+    '#wf-help-popup ul{margin:4px 0 10px;padding-left:16px;color:#444;}',
+    '#wf-help-popup li{margin-bottom:4px;}',
+    '#wf-help-close{position:absolute;top:12px;right:12px;cursor:pointer;color:#888;font-size:16px;line-height:1;}',
+    '#wf-help-close:hover{color:#1a1a1a;}',
+
     /* ── Page wrapper — layout handled in wireframe.css ── */
     '#wf-page{position:relative;}',
     'body.comment-mode #wf-page{cursor:crosshair;}',
@@ -348,6 +377,7 @@
         '<span id="wf-comment-count"></span>' +
         '<button id="wf-mode-toggle">+ Add Comment</button>' +
         '<button id="wf-export-btn">Export</button>' +
+        '<button id="wf-help-btn" title="How comments work">?</button>' +
       '</div>';
     document.body.insertBefore(toolbar, page);
 
@@ -364,6 +394,25 @@
         '<button id="wf-input-save">Save</button>' +
       '</div>';
     document.body.appendChild(popup);
+
+    // Help popup
+    var helpPopup = document.createElement('div');
+    helpPopup.id = 'wf-help-popup';
+    helpPopup.innerHTML =
+      '<span id="wf-help-close">✕</span>' +
+      '<h3>How wireframe comments work</h3>' +
+      '<p><strong>Leaving a comment</strong><br>' +
+      'Click <strong>+ Add Comment</strong>, then click anywhere on the page to drop a pin. Enter your name and note, then Save. Click any pin to re-read it.</p>' +
+      '<p><strong>Comments are stored in your browser</strong><br>' +
+      'They\'re not saved to a server — each reviewer works independently and nobody else can see yours automatically.</p>' +
+      '<p><strong>Exporting feedback</strong><br>' +
+      'Click <strong>Export</strong> to get a single summary of all your comments across every page, grouped by page and section. Copy it into Slack or an email. One export covers everything.</p>' +
+      '<p><strong>A couple of things to know</strong></p>' +
+      '<ul>' +
+        '<li>Clearing your browser cache will delete your comments — export first.</li>' +
+        '<li>Comments from different devices don\'t combine automatically.</li>' +
+      '</ul>';
+    document.body.appendChild(helpPopup);
 
     // Export panel
     var exportPanel = document.createElement('div');
@@ -384,6 +433,12 @@
     // Wire up
     document.getElementById('wf-mode-toggle').addEventListener('click', toggleCommentMode);
     document.getElementById('wf-export-btn').addEventListener('click', toggleExport);
+    document.getElementById('wf-help-btn').addEventListener('click', function() {
+      document.getElementById('wf-help-popup').classList.toggle('visible');
+    });
+    document.getElementById('wf-help-close').addEventListener('click', function() {
+      document.getElementById('wf-help-popup').classList.remove('visible');
+    });
     document.getElementById('wf-input-cancel').addEventListener('click', cancelComment);
     document.getElementById('wf-input-save').addEventListener('click', saveComment);
     document.getElementById('wf-export-close').addEventListener('click', toggleExport);
