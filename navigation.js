@@ -156,14 +156,103 @@
       });
     }
 
-    // ── 6. Chat button — bottom right ──
-    var chatBtn = document.createElement('a');
+    // ── 6. Chat widget — bottom right ──
+    // Toggle button
+    var chatBtn = document.createElement('button');
     chatBtn.className = 'wf-chat-btn';
-    chatBtn.href = root + 'page/contact.html';
-    chatBtn.title = 'Chat with us';
-    chatBtn.setAttribute('aria-label', 'Chat with us');
-    chatBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>';
+    chatBtn.setAttribute('aria-label', 'Open chat');
+    chatBtn.setAttribute('aria-expanded', 'false');
+    chatBtn.innerHTML =
+      '<span class="wf-chat-icon-open"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>' +
+      '<span class="wf-chat-icon-close" style="display:none;"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>';
     body.appendChild(chatBtn);
+
+    // Chat panel
+    var chatPanel = document.createElement('div');
+    chatPanel.className = 'wf-chat-panel';
+    chatPanel.setAttribute('aria-hidden', 'true');
+    chatPanel.innerHTML = [
+      // Header
+      '<div class="wf-chat-header">',
+        '<div class="wf-chat-header-info">',
+          '<div class="wf-chat-avatar">HP</div>',
+          '<div>',
+            '<div class="wf-chat-title">Happs Pottery</div>',
+            '<div class="wf-chat-status"><span class="wf-chat-dot"></span>Ask us anything</div>',
+          '</div>',
+        '</div>',
+        '<button class="wf-chat-panel-close" aria-label="Close chat">',
+          '<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+        '</button>',
+      '</div>',
+      // Message area
+      '<div class="wf-chat-messages">',
+        '<div class="wf-chat-msg wf-chat-msg-agent">',
+          '<p>Hi! I\'m here to help with questions about the studio, bookings, or our pottery.</p>',
+        '</div>',
+        '<div class="wf-chat-msg wf-chat-msg-agent">',
+          '<p>What can I help you with today?</p>',
+        '</div>',
+      '</div>',
+      // Quick reply shortcuts
+      '<div class="wf-chat-shortcuts">',
+        '<span class="wf-chat-shortcut-label">Quick questions</span>',
+        '<div class="wf-chat-shortcut-list">',
+          '<a href="' + root + 'page/book.html" class="wf-chat-shortcut">How do I book?</a>',
+          '<a href="' + root + 'page/faq.html" class="wf-chat-shortcut">What\'s included?</a>',
+          '<a href="' + root + 'page/visit.html" class="wf-chat-shortcut">Where are you?</a>',
+          '<a href="' + root + 'landing-page/schools.html" class="wf-chat-shortcut">School groups</a>',
+          '<a href="' + root + 'landing-page/corporate.html" class="wf-chat-shortcut">Corporate gifts</a>',
+        '</div>',
+      '</div>',
+      // Input area
+      '<div class="wf-chat-input-area">',
+        '<input class="wf-chat-input" type="text" placeholder="Type a message or question…" />',
+        '<button class="wf-chat-send" aria-label="Send">',
+          '<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>',
+        '</button>',
+      '</div>',
+      // Footer note
+      '<div class="wf-chat-footer-note">Enquiries are forwarded to the studio · <em>AI responses coming soon</em></div>',
+    ].join('');
+    body.appendChild(chatPanel);
+
+    // Toggle open/close
+    function toggleChat() {
+      var isOpen = chatPanel.classList.toggle('wf-chat-panel-open');
+      chatBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      chatBtn.querySelector('.wf-chat-icon-open').style.display  = isOpen ? 'none' : '';
+      chatBtn.querySelector('.wf-chat-icon-close').style.display = isOpen ? '' : 'none';
+      if (isOpen) chatPanel.querySelector('.wf-chat-input').focus();
+    }
+    chatBtn.addEventListener('click', toggleChat);
+    chatPanel.querySelector('.wf-chat-panel-close').addEventListener('click', toggleChat);
+
+    // Send message — wireframe: just echoes input as a user bubble
+    function sendMsg() {
+      var input = chatPanel.querySelector('.wf-chat-input');
+      var text = input.value.trim();
+      if (!text) return;
+      var msgs = chatPanel.querySelector('.wf-chat-messages');
+      var userMsg = document.createElement('div');
+      userMsg.className = 'wf-chat-msg wf-chat-msg-user';
+      userMsg.innerHTML = '<p>' + text.replace(/</g,'&lt;') + '</p>';
+      msgs.appendChild(userMsg);
+      // Simulated reply
+      setTimeout(function() {
+        var reply = document.createElement('div');
+        reply.className = 'wf-chat-msg wf-chat-msg-agent';
+        reply.innerHTML = '<p>Thanks for your message — we\'ll get back to you shortly. Or visit our <a href="' + root + 'page/faq.html">FAQ page</a> for quick answers.</p>';
+        msgs.appendChild(reply);
+        msgs.scrollTop = msgs.scrollHeight;
+      }, 800);
+      input.value = '';
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+    chatPanel.querySelector('.wf-chat-send').addEventListener('click', sendMsg);
+    chatPanel.querySelector('.wf-chat-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') sendMsg();
+    });
 
   });
 })();
