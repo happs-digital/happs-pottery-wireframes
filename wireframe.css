@@ -84,7 +84,7 @@ main {
 /* ── Layout blocks ── */
 .wf-section { display: block; padding: 2.5rem 0; border-bottom: 1px solid #eee; }
 main > .wf-section:last-child { border-bottom: none; }
-.wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
 .wf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .wf-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
 
