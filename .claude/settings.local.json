@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(rm -rf \"/Users/amber/Local Sites/Happs Pottery Wireframes/happs-pottery-wireframes/.git\")",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(gh auth *)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(ls ~/.ssh/*.pub 2>/dev/null && echo \"SSH keys found\" || echo \"No SSH keys\")"
     ]
   }
 }
