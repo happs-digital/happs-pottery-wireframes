@@ -98,11 +98,16 @@ main {
 
 /* ── Layout blocks ── */
 .wf-section { display: block; padding: 60px 0; border-bottom: 2px dashed #ddd; }
-main > .wf-section:first-of-type { padding-top: 0; }
+main > .wf-section:first-of-type { padding-top: 30px; }
+main > .wf-section.hero:first-child { padding-top: 0; }
 main > .wf-section:last-of-type { border-bottom: none; }
 .wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
 .wf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .wf-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+@media (min-width: 1200px) {
+  .wf-grid-2, .wf-grid-3, .wf-grid-4 { gap: 3rem; }
+}
 
 /* ── Wireframe components ── */
 .wf-box {
@@ -700,8 +705,8 @@ footer.wf-footer {
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .wf-grid-2,
-  .wf-grid-3,
-  .wf-grid-4 { grid-template-columns: 1fr; }
+  .wf-grid-3 { grid-template-columns: 1fr; }
+  .wf-grid-4 { grid-template-columns: 1fr 1fr; }
   nav.wf-nav { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; height: auto; padding: 0.75rem 0; gap: 0.5rem; }
   .wf-nav-links { grid-column: 1 / -1; flex-wrap: wrap; gap: 0.25rem; justify-content: flex-start; }
   .wf-nav-actions { grid-row: 1; }
