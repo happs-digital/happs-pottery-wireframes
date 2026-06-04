@@ -1,17 +1,19 @@
 (function () {
-  // Detect environment — GitHub Pages uses a repo subpath, local dev serves from root
-  var BASE = window.location.hostname === 'happs-digital.github.io'
-    ? '/happs-pottery-wireframes/'
-    : '/';
+  // Derive BASE from navigation.js's own URL — works for file://, localhost, and GitHub Pages
+  var BASE = (function () {
+    var src = document.currentScript && document.currentScript.src;
+    if (src) return src.substring(0, src.lastIndexOf('/') + 1);
+    // Fallback: strip filename from href
+    return window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+  })();
 
   // Highlight active nav link
   function setActive(navEl) {
-    var path = window.location.pathname;
+    var href = window.location.href;
     var links = navEl.querySelectorAll('a[data-page]');
     links.forEach(function (a) {
       var page = a.getAttribute('data-page');
-      var match = path === BASE + page || (page === 'index.html' && path === BASE);
-      if (match) {
+      if (href === BASE + page) {
         a.classList.add('active');
       }
     });
