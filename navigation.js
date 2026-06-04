@@ -1,6 +1,8 @@
 (function () {
-  // Fixed base for GitHub Pages — all nav/footer links are absolute from here
-  var BASE = '/happs-pottery-wireframes/';
+  // Detect environment — GitHub Pages uses a repo subpath, local dev serves from root
+  var BASE = window.location.hostname === 'happs-digital.github.io'
+    ? '/happs-pottery-wireframes/'
+    : '/';
 
   // Highlight active nav link
   function setActive(navEl) {
