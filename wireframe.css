@@ -358,9 +358,9 @@ footer.wf-footer {
   transform: rotate(180deg);
   background: #444;
   color: #fff;
-  padding: 18px 10px;
-  border-radius: 6px 0 0 6px;
-  font-size: 12px;
+  padding: 22px 13px;
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-decoration: none;
@@ -368,7 +368,7 @@ footer.wf-footer {
   box-shadow: -2px 0 12px rgba(0,0,0,0.12);
   transition: background 0.15s, padding 0.15s;
 }
-.wf-book-tab a:hover { background: #222; padding: 18px 14px; }
+.wf-book-tab a:hover { background: #222; padding: 22px 17px; }
 
 /* Promo popup — bottom left */
 .wf-promo {
