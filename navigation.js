@@ -8,7 +8,8 @@
     var links = navEl.querySelectorAll('a[data-page]');
     links.forEach(function (a) {
       var page = a.getAttribute('data-page');
-      if (path.endsWith(page) || (page === 'index.html' && path === BASE)) {
+      var match = path === BASE + page || (page === 'index.html' && path === BASE);
+      if (match) {
         a.classList.add('active');
       }
     });
@@ -43,13 +44,13 @@
         '<nav class="wf-nav">',
           '<span class="wf-nav-brand">Happs Pottery</span>',
           '<div class="wf-nav-links">',
-            '<a href="' + root + 'index.html" data-page="index.html">Home</a>',
-            '<a href="' + root + 'experiences/index.html" data-page="experiences/index.html">Experiences</a>',
-            '<a href="' + root + 'shop/index.html" data-page="shop/index.html">Shop</a>',
-            '<a href="' + root + 'page/what-we-do.html" data-page="page/what-we-do.html">What We Do</a>',
-            '<a href="' + root + 'page/about.html" data-page="page/about.html">About</a>',
-            '<a href="' + root + 'page/visit.html" data-page="page/visit.html">Visit</a>',
-            '<a href="' + root + 'page/contact.html" data-page="page/contact.html">Contact</a>',
+            '<a href="' + root + 'index.html" data-page="index.html"><span>Home</span></a>',
+            '<a href="' + root + 'experiences/index.html" data-page="experiences/index.html"><span>Experiences</span></a>',
+            '<a href="' + root + 'shop/index.html" data-page="shop/index.html"><span>Shop</span></a>',
+            '<a href="' + root + 'page/what-we-do.html" data-page="page/what-we-do.html"><span>What We Do</span></a>',
+            '<a href="' + root + 'page/about.html" data-page="page/about.html"><span>About</span></a>',
+            '<a href="' + root + 'page/visit.html" data-page="page/visit.html"><span>Visit</span></a>',
+            '<a href="' + root + 'page/contact.html" data-page="page/contact.html"><span>Contact</span></a>',
           '</div>',
           '<div class="wf-nav-actions">',
             '<button id="wf-search-trigger" class="wf-nav-icon-btn" title="Search" aria-label="Open search">' + ICON_SEARCH + '</button>',

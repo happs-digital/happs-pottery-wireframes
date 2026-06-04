@@ -61,7 +61,7 @@ nav.wf-nav {
   height: 80px;
 }
 nav.wf-nav a { color: #333; text-decoration: none; font-size: 14px; padding: 0 12px; }
-nav.wf-nav a.active { border-bottom: 2px solid #333; }
+nav.wf-nav a.active span { border-bottom: 2px solid #333; }
 nav.wf-nav a:hover { color: #666; }
 .wf-nav-brand { color: #111; font-weight: 600; font-size: 15px; white-space: nowrap; }
 .wf-nav-links { display: flex; align-items: center; justify-content: center; }
@@ -97,8 +97,9 @@ main {
 }
 
 /* ── Layout blocks ── */
-.wf-section { display: block; padding: 60px 0; border-bottom: 1px solid #eee; }
-main > .wf-section:last-child { border-bottom: none; }
+.wf-section { display: block; padding: 60px 0; border-bottom: 2px dashed #ddd; }
+main > .wf-section:first-of-type { padding-top: 0; }
+main > .wf-section:last-of-type { border-bottom: none; }
 .wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
 .wf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .wf-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
