@@ -706,8 +706,206 @@ footer.wf-footer {
   margin: 0 4px 4px 0;
 }
 
+/* ── Amelia booking widget (greyscale wireframe representation) ── */
+.amelia-widget { display: grid; grid-template-columns: 220px 1fr; border: 1px solid #d8d8d8; border-radius: 12px; overflow: hidden; background: #fff; margin-bottom: 20px; max-width: 760px; }
+.amelia-widget.amelia-dim { opacity: .45; }
+
+.amelia-sidebar { background: #2b2b28; padding: 24px 0; display: flex; flex-direction: column; }
+.amelia-sidebar-title { font-size: 13px; font-weight: 600; color: #fff; padding: 0 20px 20px; border-bottom: 1px solid #3a3a36; margin-bottom: 8px; line-height: 1.4; }
+.amelia-sidebar-title span { display: block; font-size: 11px; font-weight: 400; color: #888; margin-top: 3px; }
+
+.amelia-step { display: flex; align-items: flex-start; gap: 12px; padding: 10px 20px; position: relative; }
+.amelia-step.is-active { background: rgba(255,255,255,.06); }
+.amelia-step.is-active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #aaa; border-radius: 0 2px 2px 0; }
+.amelia-step-dot { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+.amelia-step.is-done .amelia-step-dot { background: #666; color: #fff; }
+.amelia-step.is-active .amelia-step-dot { background: #fff; color: #2b2b28; }
+.amelia-step.is-inactive .amelia-step-dot { background: #3a3a36; color: #666; }
+.amelia-step-text { display: flex; flex-direction: column; gap: 2px; }
+.amelia-step-label { font-size: 12px; font-weight: 500; }
+.amelia-step.is-active .amelia-step-label { color: #fff; }
+.amelia-step.is-done .amelia-step-label { color: #aaa; }
+.amelia-step.is-inactive .amelia-step-label { color: #555; }
+.amelia-step-value { font-size: 11px; }
+.amelia-step.is-done .amelia-step-value { color: #888; }
+.amelia-step.is-active .amelia-step-value { color: #ccc; }
+.amelia-step.is-inactive .amelia-step-value { color: #444; }
+
+.amelia-content { padding: 28px 28px 24px; }
+.amelia-content h3 { font-size: 16px; font-weight: 600; color: #1a1a18; margin-bottom: 6px; }
+.amelia-content p.amelia-sub { font-size: 12px; color: #888; margin-bottom: 22px; }
+
+.amelia-field-label { font-size: 11px; color: #666; margin-bottom: 5px; display: block; }
+.amelia-req { color: #888; }
+
+.amelia-dropdown { width: 100%; height: 42px; border: 1px solid #d8d8d8; border-radius: 8px; background: #fafaf9; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; margin-bottom: 12px; }
+.amelia-dropdown.is-open { border: 1px solid #888; border-radius: 8px 8px 0 0; background: #fff; }
+.amelia-dropdown-val { font-size: 13px; color: #1a1a18; font-weight: 500; }
+.amelia-dropdown-ph { font-size: 13px; color: #bbb; }
+.amelia-dropdown-arrow { font-size: 11px; color: #bbb; }
+.amelia-dropdown-menu { border: 1px solid #d8d8d8; border-top: none; border-radius: 0 0 8px 8px; background: #fff; margin-bottom: 12px; overflow: hidden; }
+.amelia-dd-category { padding: 10px 14px; background: #f9f9f9; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: #888; border-bottom: 1px solid #eee; }
+.amelia-dd-item { padding: 10px 14px 10px 24px; font-size: 13px; color: #1a1a18; border-bottom: 1px solid #f5f5f5; display: flex; justify-content: space-between; align-items: center; }
+.amelia-dd-item:last-child { border-bottom: none; }
+.amelia-dd-item.is-selected { background: #f0f0f0; color: #111; font-weight: 500; }
+.amelia-dd-price { font-size: 11px; color: #888; }
+.amelia-dd-item.is-selected .amelia-dd-price { color: #555; }
+
+.amelia-qty-row { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.amelia-qty-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid #d8d8d8; background: #fff; font-size: 18px; color: #888; display: flex; align-items: center; justify-content: center; }
+.amelia-qty-val { font-size: 22px; font-weight: 600; color: #1a1a18; min-width: 28px; text-align: center; }
+.amelia-qty-desc { font-size: 12px; color: #888; margin-bottom: 20px; }
+
+.amelia-cal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 4px; }
+.amelia-cal { border: 1px solid #d8d8d8; border-radius: 8px; overflow: hidden; }
+.amelia-cal-hd { background: #f9f9f9; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #d8d8d8; }
+.amelia-cal-hd .amelia-cal-month { font-size: 13px; font-weight: 600; }
+.amelia-cal-nav { color: #bbb; font-size: 16px; padding: 0 4px; }
+.amelia-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; padding: 10px 8px; }
+.amelia-d { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 11px; border-radius: 50%; color: #888; }
+.amelia-d.hd { font-size: 10px; font-weight: 600; color: #bbb; }
+.amelia-d.avail { color: #555; }
+.amelia-d.sel { background: #333; color: #fff; font-weight: 600; }
+.amelia-d.today { font-weight: 700; color: #222; }
+.amelia-d.dim { opacity: .25; }
+.amelia-d.dot::after { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: #888; margin: 0 auto; margin-top: -2px; }
+
+.amelia-slots-hd { font-size: 12px; font-weight: 600; color: #1a1a18; margin-bottom: 10px; }
+.amelia-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.amelia-slot { padding: 9px 6px; text-align: center; font-size: 12px; border: 1px solid #d8d8d8; border-radius: 7px; color: #555; background: #fff; }
+.amelia-slot.sel { border: 2px solid #555; color: #111; font-weight: 600; background: #f0f0f0; }
+.amelia-slot.dim { opacity: .3; text-decoration: line-through; }
+
+.amelia-fld-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.amelia-fld { display: flex; flex-direction: column; gap: 5px; }
+.amelia-mock-input { height: 38px; border: 1px solid #d8d8d8; border-radius: 7px; background: #fafaf9; }
+.amelia-mock-textarea { height: 64px; border: 1px solid #d8d8d8; border-radius: 7px; background: #fafaf9; }
+
+.amelia-pay-summary { border: 1px solid #d8d8d8; border-radius: 8px; overflow: hidden; margin-bottom: 18px; }
+.amelia-pay-row { display: flex; justify-content: space-between; padding: 10px 14px; font-size: 13px; border-bottom: 1px solid #eee; }
+.amelia-pay-row:last-child { border-bottom: none; }
+.amelia-pay-row.total { font-weight: 600; font-size: 14px; background: #f9f9f9; }
+.amelia-coupon-row { display: flex; gap: 8px; margin-bottom: 16px; }
+.amelia-coupon-input { flex: 1; height: 38px; border: 1px solid #d8d8d8; border-radius: 7px; background: #fafaf9; }
+.amelia-coupon-btn { height: 38px; padding: 0 16px; border: 1px solid #d8d8d8; border-radius: 7px; background: #fff; font-size: 12px; color: #888; white-space: nowrap; }
+.amelia-pay-methods { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+.amelia-pay-method { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid #d8d8d8; border-radius: 8px; }
+.amelia-pay-method.is-selected { border: 2px solid #555; background: #f5f5f5; }
+.amelia-pay-radio { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #ccc; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.amelia-pay-method.is-selected .amelia-pay-radio { border-color: #555; }
+.amelia-pay-radio-inner { width: 8px; height: 8px; border-radius: 50%; background: #555; }
+.amelia-pay-method-label { font-size: 13px; font-weight: 500; color: #1a1a18; }
+.amelia-pay-method-sub { font-size: 11px; color: #888; margin-top: 1px; }
+.amelia-stripe-badge { font-size: 10px; padding: 2px 8px; border-radius: 4px; background: #555; color: #fff; font-weight: 600; margin-left: auto; }
+
+.amelia-confirm-wrap { text-align: center; padding: 16px 0 8px; }
+.amelia-confirm-icon { width: 56px; height: 56px; border-radius: 50%; background: #efefef; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 26px; }
+.amelia-confirm-title { font-size: 18px; font-weight: 700; color: #1a1a18; margin-bottom: 6px; }
+.amelia-confirm-sub { font-size: 13px; color: #888; margin-bottom: 22px; }
+.amelia-confirm-details { border: 1px solid #d8d8d8; border-radius: 8px; text-align: left; margin-bottom: 20px; overflow: hidden; }
+.amelia-confirm-row { display: flex; justify-content: space-between; padding: 9px 14px; font-size: 12px; border-bottom: 1px solid #eee; }
+.amelia-confirm-row:last-child { border-bottom: none; }
+.amelia-confirm-row .lbl { color: #888; }
+.amelia-confirm-row .val { font-weight: 500; color: #1a1a18; }
+.amelia-cal-add { margin-bottom: 20px; }
+.amelia-cal-add p { font-size: 11px; color: #888; margin-bottom: 8px; }
+.amelia-cal-btns { display: flex; gap: 7px; flex-wrap: wrap; }
+.amelia-cal-btn { font-size: 11px; padding: 5px 10px; border: 1px solid #d8d8d8; border-radius: 6px; background: #fff; color: #555; }
+.amelia-btn-finish { width: 100%; height: 42px; background: #2b2b28; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; }
+
+.amelia-act { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; border-top: 1px solid #eee; margin-top: 16px; }
+.amelia-btn-back { font-size: 12px; color: #888; background: none; border: 1px solid #d8d8d8; border-radius: 7px; padding: 9px 16px; }
+.amelia-btn-next { font-size: 13px; font-weight: 600; background: #2b2b28; color: #fff; border: none; border-radius: 7px; padding: 9px 20px; }
+.amelia-contact-link { font-size: 11px; color: #aaa; margin-top: 16px; }
+.amelia-contact-link a { color: #666; text-decoration: none; }
+
+.amelia-step-note { font-size: 11px; color: #bbb; margin: 0 0 10px; font-style: italic; }
+
+/* Amelia event list widget */
+.amelia-ev-card { background: #fff; border: 1px solid #d8d8d8; border-radius: 12px; overflow: hidden; margin-bottom: 20px; max-width: 760px; }
+.amelia-ev-hd { background: #f9f9f9; padding: 16px 22px; border-bottom: 1px solid #d8d8d8; }
+.amelia-ev-hd h3 { font-size: 15px; font-weight: 600; margin-bottom: 0; }
+.amelia-ev-hd p { font-size: 12px; color: #888; margin-top: 3px; }
+.amelia-ev-list { padding: 0 22px; }
+.amelia-ev { display: grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #eee; }
+.amelia-ev:last-child { border-bottom: none; }
+.amelia-ev-dt { background: #f5f5f5; border-radius: 8px; padding: 8px 6px; text-align: center; }
+.amelia-ev-day { font-size: 20px; font-weight: 700; line-height: 1; color: #1a1a18; }
+.amelia-ev-mon { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: #888; margin-top: 2px; }
+.amelia-ev-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; color: #1a1a18; }
+.amelia-ev-meta { font-size: 11px; color: #888; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.amelia-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 5px; }
+.amelia-badge.available { background: #e8e8e8; color: #333; }
+.amelia-badge.limited { background: #e0e0e0; color: #555; }
+.amelia-badge.sold-out { background: #d8d8d8; color: #999; }
+.amelia-ev-r { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.amelia-ev-price { font-size: 12px; font-weight: 600; color: #1a1a18; }
+.amelia-btn-book { font-size: 11px; font-weight: 600; background: #2b2b28; color: #fff; border: none; border-radius: 7px; padding: 7px 13px; white-space: nowrap; }
+.amelia-btn-book.sold-out { background: #efefef; color: #bbb; }
+
+/* ── Book page two-column layout ── */
+.book-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.book-col-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #aaa; margin-bottom: 20px; }
+
+/* ── Custom availability calendar widget ── */
+.cal-widget { border: 1px solid #d8d8d8; border-radius: 12px; overflow: hidden; background: #fff; }
+.cal-widget-hd { background: #f5f5f5; padding: 14px 18px; border-bottom: 1px solid #d8d8d8; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.cal-widget-hd-text h3 { font-size: 14px; font-weight: 600; color: #1a1a18; margin-bottom: 3px; }
+.cal-widget-hd-text p { font-size: 11px; color: #888; line-height: 1.4; }
+.cal-widget-custom-tag { font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: #e8e8e8; color: #666; border: 1px dashed #bbb; white-space: nowrap; flex-shrink: 0; }
+
+.cal-widget-body { padding: 18px; }
+
+.cal-month-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.cal-month-nav-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid #d8d8d8; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #888; cursor: pointer; }
+.cal-month-label { font-size: 14px; font-weight: 600; color: #1a1a18; }
+
+.cal-inner { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
+.cal-grid-wrap { min-width: 200px; }
+.cal-days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.cal-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 11px; border-radius: 50%; position: relative; }
+.cal-cell.hd { font-size: 10px; font-weight: 600; color: #bbb; }
+.cal-cell.inactive { color: #ccc; }
+.cal-cell.today { font-weight: 700; color: #333; }
+
+/* Availability circle states — greyscale representations of green/yellow/red in production */
+.cal-cell.avail { border: 2px solid #aaa; color: #333; font-weight: 500; cursor: pointer; }
+.cal-cell.limited { border: 2px solid #888; background: #e0e0e0; color: #333; font-weight: 500; cursor: pointer; }
+.cal-cell.full { border: 2px solid #555; background: #555; color: #fff; font-weight: 500; cursor: default; }
+.cal-cell.selected { border: 2px solid #1a1a18; background: #1a1a18; color: #fff; font-weight: 600; }
+
+.cal-legend { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; padding-top: 14px; border-top: 1px solid #eee; }
+.cal-legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #666; }
+.cal-legend-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+.cal-legend-dot.avail { border: 2px solid #aaa; }
+.cal-legend-dot.limited { border: 2px solid #888; background: #e0e0e0; }
+.cal-legend-dot.full { border: 2px solid #555; background: #555; }
+.cal-legend-colour { font-size: 10px; color: #bbb; margin-left: 2px; }
+
+/* Slot panel — appears to the right of the calendar grid when a date is selected */
+.cal-slot-panel { border: 1px solid #d8d8d8; border-radius: 8px; overflow: hidden; min-width: 160px; }
+.cal-slot-panel-hd { background: #f5f5f5; padding: 9px 12px; border-bottom: 1px solid #d8d8d8; }
+.cal-slot-panel-date { font-size: 12px; font-weight: 600; color: #1a1a18; }
+.cal-slot-panel-sub { font-size: 10px; color: #888; margin-top: 2px; }
+.cal-slot-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 9px 12px; border-bottom: 1px solid #eee; }
+.cal-slot-row:last-child { border-bottom: none; }
+.cal-slot-time { font-size: 12px; font-weight: 500; color: #1a1a18; }
+.cal-slot-spots { font-size: 10px; color: #888; margin-top: 1px; }
+.cal-slot-btn { font-size: 10px; font-weight: 600; padding: 4px 10px; border-radius: 5px; border: none; background: #2b2b28; color: #fff; white-space: nowrap; cursor: pointer; }
+.cal-slot-btn.full { background: #efefef; color: #bbb; cursor: default; }
+
+.cal-slot-panel-empty { padding: 20px 12px; font-size: 11px; color: #aaa; text-align: center; font-style: italic; }
+
+/* Wireframe annotation note */
+.wf-custom-note { font-size: 11px; color: #aaa; font-style: italic; line-height: 1.5; padding: 10px 14px; background: #fafafa; border: 1px dashed #ddd; border-radius: 6px; margin-top: 14px; }
+.wf-custom-note strong { color: #888; font-style: normal; }
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
+  .book-layout { grid-template-columns: 1fr; }
+  .cal-inner { grid-template-columns: 1fr; }
+  .cal-slot-panel { margin-top: 12px; }
+}
   .wf-grid-2,
   .wf-grid-3 { grid-template-columns: 1fr; }
   .wf-grid-4 { grid-template-columns: 1fr 1fr; }

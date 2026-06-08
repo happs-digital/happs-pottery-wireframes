@@ -7,17 +7,462 @@
   <link rel="stylesheet" href="../wireframe.css">
 </head>
 <body>
-  <h1>Book an Experience</h1>
+
   <div class="wf-section">
-      <div class="page-width">
-    <span class="wf-label">Transactional</span>
-    <div class="wf-box">
-      Book an Experience — wireframe coming soon
+    <div class="page-width">
+      <span class="wf-label">Transactional</span>
+      <h1>Book an Experience</h1>
+      <p>Studio Pottery Experience — $69 per person, 1.5 hrs. Two booking widget options are shown below for evaluation.</p>
     </div>
-    <p style="margin-top:1.5rem;"></p>
-    <a href="enquire.html" class="wf-btn" style="margin-top:1rem;">Continue →</a>
-        </div>
-    </div>
+  </div>
+
+  <div class="wf-section" style="padding-top: 0;">
+    <div class="page-width">
+      <div class="book-layout">
+
+        <!-- ── LEFT COLUMN: Custom calendar widget ── -->
+        <div>
+          <p class="book-col-label">Option A — Custom availability calendar</p>
+
+          <div class="cal-widget">
+            <div class="cal-widget-hd">
+              <div class="cal-widget-hd-text">
+                <h3>Studio Pottery Experience</h3>
+                <p>Select a date to see available sessions</p>
+              </div>
+              <span class="cal-widget-custom-tag">Custom widget</span>
+            </div>
+
+            <div class="cal-widget-body">
+
+              <div class="cal-month-nav">
+                <button class="cal-month-nav-btn">‹</button>
+                <span class="cal-month-label">June 2026</span>
+                <button class="cal-month-nav-btn">›</button>
+              </div>
+
+              <div class="cal-inner">
+
+                <!-- Calendar grid -->
+                <div class="cal-grid-wrap">
+                  <div class="cal-days-grid">
+                    <!-- Day headers -->
+                    <div class="cal-cell hd">Mo</div>
+                    <div class="cal-cell hd">Tu</div>
+                    <div class="cal-cell hd">We</div>
+                    <div class="cal-cell hd">Th</div>
+                    <div class="cal-cell hd">Fr</div>
+                    <div class="cal-cell hd">Sa</div>
+                    <div class="cal-cell hd">Su</div>
+                    <!-- Week 1 -->
+                    <div class="cal-cell inactive">1</div>
+                    <div class="cal-cell inactive">2</div>
+                    <div class="cal-cell inactive">3</div>
+                    <div class="cal-cell today">4</div>
+                    <div class="cal-cell inactive">5</div>
+                    <div class="cal-cell avail">6</div>
+                    <div class="cal-cell avail">7</div>
+                    <!-- Week 2 -->
+                    <div class="cal-cell inactive">8</div>
+                    <div class="cal-cell inactive">9</div>
+                    <div class="cal-cell inactive">10</div>
+                    <div class="cal-cell inactive">11</div>
+                    <div class="cal-cell inactive">12</div>
+                    <div class="cal-cell selected">13</div>
+                    <div class="cal-cell limited">14</div>
+                    <!-- Week 3 -->
+                    <div class="cal-cell inactive">15</div>
+                    <div class="cal-cell inactive">16</div>
+                    <div class="cal-cell inactive">17</div>
+                    <div class="cal-cell inactive">18</div>
+                    <div class="cal-cell inactive">19</div>
+                    <div class="cal-cell avail">20</div>
+                    <div class="cal-cell avail">21</div>
+                    <!-- Week 4 -->
+                    <div class="cal-cell inactive">22</div>
+                    <div class="cal-cell inactive">23</div>
+                    <div class="cal-cell inactive">24</div>
+                    <div class="cal-cell inactive">25</div>
+                    <div class="cal-cell inactive">26</div>
+                    <div class="cal-cell full">27</div>
+                    <div class="cal-cell avail">28</div>
+                    <!-- Week 5 -->
+                    <div class="cal-cell inactive">29</div>
+                    <div class="cal-cell inactive">30</div>
+                  </div>
+
+                  <!-- Legend -->
+                  <div class="cal-legend">
+                    <div class="cal-legend-item">
+                      <div class="cal-legend-dot avail"></div>
+                      <span>Available <span class="cal-legend-colour">(green)</span></span>
+                    </div>
+                    <div class="cal-legend-item">
+                      <div class="cal-legend-dot limited"></div>
+                      <span>Limited spots <span class="cal-legend-colour">(yellow)</span></span>
+                    </div>
+                    <div class="cal-legend-item">
+                      <div class="cal-legend-dot full"></div>
+                      <span>Fully booked <span class="cal-legend-colour">(red)</span></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slot panel — shown when a date is selected -->
+                <div class="cal-slot-panel">
+                  <div class="cal-slot-panel-hd">
+                    <div class="cal-slot-panel-date">Saturday, 13 June</div>
+                    <div class="cal-slot-panel-sub">3 sessions available</div>
+                  </div>
+                  <div class="cal-slot-row">
+                    <div>
+                      <div class="cal-slot-time">10:00 am</div>
+                      <div class="cal-slot-spots">6 spots left</div>
+                    </div>
+                    <button class="cal-slot-btn">Book</button>
+                  </div>
+                  <div class="cal-slot-row">
+                    <div>
+                      <div class="cal-slot-time">11:30 am</div>
+                      <div class="cal-slot-spots">2 spots left</div>
+                    </div>
+                    <button class="cal-slot-btn">Book</button>
+                  </div>
+                  <div class="cal-slot-row">
+                    <div>
+                      <div class="cal-slot-time">1:00 pm</div>
+                      <div class="cal-slot-spots">Fully booked</div>
+                    </div>
+                    <button class="cal-slot-btn full">Full</button>
+                  </div>
+                  <div class="cal-slot-row">
+                    <div>
+                      <div class="cal-slot-time">2:30 pm</div>
+                      <div class="cal-slot-spots">8 spots left</div>
+                    </div>
+                    <button class="cal-slot-btn">Book</button>
+                  </div>
+                </div>
+
+              </div><!-- /.cal-inner -->
+
+            </div><!-- /.cal-widget-body -->
+          </div><!-- /.cal-widget -->
+
+          <div class="wf-custom-note">
+            <strong>Custom widget — not native to Amelia.</strong> Amelia's built-in calendar does not support colour-coded availability circles or a hover/click slot panel. This would need to be built as a custom component, either as a WordPress plugin extension or a standalone JS widget that reads from Amelia's API.
+          </div>
+
+        </div><!-- /left col -->
+
+        <!-- ── RIGHT COLUMN: Amelia step-by-step wizard ── -->
+        <div>
+          <p class="book-col-label">Option B — Amelia plugin (step-by-step wizard)</p>
+          <p class="amelia-step-note" style="margin-bottom: 18px;">All stages shown in sequence for reference. Steps 2–5 and confirmation shown at reduced opacity.</p>
+
+          <!-- Step 1: Service -->
+          <p class="amelia-step-note">Step 1 — service selection (active)</p>
+          <div class="amelia-widget">
+            <div class="amelia-sidebar">
+              <div class="amelia-sidebar-title">
+                Book a pottery experience
+                <span>749 Caves Road, Anniebrook</span>
+              </div>
+              <div class="amelia-step is-active">
+                <div class="amelia-step-dot">1</div>
+                <div class="amelia-step-text">
+                  <span class="amelia-step-label">Service</span>
+                  <span class="amelia-step-value">Select a service</span>
+                </div>
+              </div>
+              <div class="amelia-step is-inactive">
+                <div class="amelia-step-dot">2</div>
+                <div class="amelia-step-text">
+                  <span class="amelia-step-label">Guests</span>
+                  <span class="amelia-step-value">—</span>
+                </div>
+              </div>
+              <div class="amelia-step is-inactive">
+                <div class="amelia-step-dot">3</div>
+                <div class="amelia-step-text">
+                  <span class="amelia-step-label">Date &amp; time</span>
+                  <span class="amelia-step-value">—</span>
+                </div>
+              </div>
+              <div class="amelia-step is-inactive">
+                <div class="amelia-step-dot">4</div>
+                <div class="amelia-step-text">
+                  <span class="amelia-step-label">Your details</span>
+                  <span class="amelia-step-value">—</span>
+                </div>
+              </div>
+              <div class="amelia-step is-inactive">
+                <div class="amelia-step-dot">5</div>
+                <div class="amelia-step-text">
+                  <span class="amelia-step-label">Payment</span>
+                  <span class="amelia-step-value">—</span>
+                </div>
+              </div>
+            </div>
+            <div class="amelia-content">
+              <h3>Choose a service</h3>
+              <p class="amelia-sub">Select the experience you'd like to book.</p>
+
+              <label class="amelia-field-label">Service <span class="amelia-req">*</span></label>
+              <div class="amelia-dropdown is-open">
+                <span class="amelia-dropdown-ph">Select a service…</span>
+                <span class="amelia-dropdown-arrow">▲</span>
+              </div>
+              <div class="amelia-dropdown-menu">
+                <div class="amelia-dd-category">Experiences</div>
+                <div class="amelia-dd-item is-selected">Studio Pottery Experience <span class="amelia-dd-price">$69 / person</span></div>
+              </div>
+
+              <label class="amelia-field-label" style="margin-top: 4px;">Employee <span style="color: #bbb; font-size: 10px;">(optional)</span></label>
+              <div class="amelia-dropdown" style="margin-bottom: 12px;">
+                <span class="amelia-dropdown-val">Any available</span>
+                <span class="amelia-dropdown-arrow">▼</span>
+              </div>
+
+              <label class="amelia-field-label">Location <span style="color: #bbb; font-size: 10px;">(optional)</span></label>
+              <div class="amelia-dropdown">
+                <span class="amelia-dropdown-val">749 Caves Road, Anniebrook</span>
+                <span class="amelia-dropdown-arrow">▼</span>
+              </div>
+
+              <p class="amelia-contact-link">Questions? <a href="contact.html">studio@happspottery.com.au</a></p>
+
+              <div class="amelia-act">
+                <span></span>
+                <button class="amelia-btn-next">Continue →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Guests -->
+          <p class="amelia-step-note">Step 2 — number of guests (active)</p>
+          <div class="amelia-widget amelia-dim">
+            <div class="amelia-sidebar">
+              <div class="amelia-sidebar-title">Book a pottery experience<span>Studio Pottery Experience</span></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Service</span><span class="amelia-step-value">Studio Experience</span></div></div>
+              <div class="amelia-step is-active"><div class="amelia-step-dot">2</div><div class="amelia-step-text"><span class="amelia-step-label">Guests</span><span class="amelia-step-value">How many?</span></div></div>
+              <div class="amelia-step is-inactive"><div class="amelia-step-dot">3</div><div class="amelia-step-text"><span class="amelia-step-label">Date &amp; time</span><span class="amelia-step-value">—</span></div></div>
+              <div class="amelia-step is-inactive"><div class="amelia-step-dot">4</div><div class="amelia-step-text"><span class="amelia-step-label">Your details</span><span class="amelia-step-value">—</span></div></div>
+              <div class="amelia-step is-inactive"><div class="amelia-step-dot">5</div><div class="amelia-step-text"><span class="amelia-step-label">Payment</span><span class="amelia-step-value">—</span></div></div>
+            </div>
+            <div class="amelia-content">
+              <h3>Are you bringing anyone?</h3>
+              <p class="amelia-sub">Studio Pottery Experience — max 8 guests per session.</p>
+              <p class="amelia-field-label" style="margin-bottom: 14px;">Number of additional guests <span style="color: #bbb; font-size: 10px;">(not including yourself)</span></p>
+              <div class="amelia-qty-row">
+                <button class="amelia-qty-btn">−</button>
+                <span class="amelia-qty-val">1</span>
+                <button class="amelia-qty-btn">+</button>
+              </div>
+              <p class="amelia-qty-desc">Total booking: 2 people · $138.00</p>
+              <div class="amelia-act">
+                <button class="amelia-btn-back">← Back</button>
+                <button class="amelia-btn-next">Continue →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Date & time -->
+          <p class="amelia-step-note">Step 3 — date &amp; time selection (active)</p>
+          <div class="amelia-widget amelia-dim">
+            <div class="amelia-sidebar">
+              <div class="amelia-sidebar-title">Book a pottery experience<span>Studio Pottery Experience · 2 guests</span></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Service</span><span class="amelia-step-value">Studio Experience</span></div></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Guests</span><span class="amelia-step-value">2 people</span></div></div>
+              <div class="amelia-step is-active"><div class="amelia-step-dot">3</div><div class="amelia-step-text"><span class="amelia-step-label">Date &amp; time</span><span class="amelia-step-value">Choose a date</span></div></div>
+              <div class="amelia-step is-inactive"><div class="amelia-step-dot">4</div><div class="amelia-step-text"><span class="amelia-step-label">Your details</span><span class="amelia-step-value">—</span></div></div>
+              <div class="amelia-step is-inactive"><div class="amelia-step-dot">5</div><div class="amelia-step-text"><span class="amelia-step-label">Payment</span><span class="amelia-step-value">—</span></div></div>
+            </div>
+            <div class="amelia-content">
+              <h3>Choose a date &amp; time</h3>
+              <p class="amelia-sub">Select an available date, then choose a time slot.</p>
+              <div class="amelia-cal-row">
+                <div class="amelia-cal">
+                  <div class="amelia-cal-hd">
+                    <span class="amelia-cal-nav">‹</span>
+                    <span class="amelia-cal-month">June 2026</span>
+                    <span class="amelia-cal-nav">›</span>
+                  </div>
+                  <div class="amelia-cal-grid">
+                    <div class="amelia-d hd">Mo</div><div class="amelia-d hd">Tu</div><div class="amelia-d hd">We</div><div class="amelia-d hd">Th</div><div class="amelia-d hd">Fr</div><div class="amelia-d hd">Sa</div><div class="amelia-d hd">Su</div>
+                    <div class="amelia-d dim">1</div><div class="amelia-d dim">2</div><div class="amelia-d dim">3</div><div class="amelia-d dim today">4</div><div class="amelia-d dim">5</div><div class="amelia-d avail dot">6</div><div class="amelia-d avail dot">7</div>
+                    <div class="amelia-d dim">8</div><div class="amelia-d dim">9</div><div class="amelia-d dim">10</div><div class="amelia-d dim">11</div><div class="amelia-d dim">12</div><div class="amelia-d sel">13</div><div class="amelia-d avail dot">14</div>
+                    <div class="amelia-d dim">15</div><div class="amelia-d dim">16</div><div class="amelia-d dim">17</div><div class="amelia-d dim">18</div><div class="amelia-d dim">19</div><div class="amelia-d avail dot">20</div><div class="amelia-d avail dot">21</div>
+                    <div class="amelia-d dim">22</div><div class="amelia-d dim">23</div><div class="amelia-d dim">24</div><div class="amelia-d dim">25</div><div class="amelia-d dim">26</div><div class="amelia-d avail dot">27</div><div class="amelia-d avail dot">28</div>
+                  </div>
+                </div>
+                <div>
+                  <p class="amelia-slots-hd">Saturday, 13 June</p>
+                  <div class="amelia-slots">
+                    <div class="amelia-slot dim">9:00 am</div>
+                    <div class="amelia-slot">10:00 am</div>
+                    <div class="amelia-slot sel">11:30 am</div>
+                    <div class="amelia-slot">1:00 pm</div>
+                    <div class="amelia-slot">2:30 pm</div>
+                    <div class="amelia-slot dim">4:00 pm</div>
+                  </div>
+                </div>
+              </div>
+              <div class="amelia-act">
+                <button class="amelia-btn-back">← Back</button>
+                <button class="amelia-btn-next">Continue →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Your details -->
+          <p class="amelia-step-note">Step 4 — contact details (active)</p>
+          <div class="amelia-widget amelia-dim">
+            <div class="amelia-sidebar">
+              <div class="amelia-sidebar-title">Book a pottery experience<span>Sat 13 Jun · 11:30 am</span></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Service</span><span class="amelia-step-value">Studio Experience</span></div></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Guests</span><span class="amelia-step-value">2 people</span></div></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Date &amp; time</span><span class="amelia-step-value">Sat 13 Jun, 11:30 am</span></div></div>
+              <div class="amelia-step is-active"><div class="amelia-step-dot">4</div><div class="amelia-step-text"><span class="amelia-step-label">Your details</span><span class="amelia-step-value">Fill in your info</span></div></div>
+              <div class="amelia-step is-inactive"><div class="amelia-step-dot">5</div><div class="amelia-step-text"><span class="amelia-step-label">Payment</span><span class="amelia-step-value">—</span></div></div>
+            </div>
+            <div class="amelia-content">
+              <h3>Your details</h3>
+              <p class="amelia-sub">We'll send your booking confirmation to this email address.</p>
+              <div class="amelia-fld-grid">
+                <div class="amelia-fld"><label class="amelia-field-label">First name <span class="amelia-req">*</span></label><div class="amelia-mock-input"></div></div>
+                <div class="amelia-fld"><label class="amelia-field-label">Last name</label><div class="amelia-mock-input"></div></div>
+                <div class="amelia-fld"><label class="amelia-field-label">Email address <span class="amelia-req">*</span></label><div class="amelia-mock-input"></div></div>
+                <div class="amelia-fld"><label class="amelia-field-label">Phone number <span class="amelia-req">*</span></label><div class="amelia-mock-input"></div></div>
+              </div>
+              <div class="amelia-fld">
+                <label class="amelia-field-label">Notes — allergies, accessibility needs, special occasions</label>
+                <div class="amelia-mock-textarea"></div>
+              </div>
+              <div class="amelia-act">
+                <button class="amelia-btn-back">← Back</button>
+                <button class="amelia-btn-next">Continue →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5: Payment -->
+          <p class="amelia-step-note">Step 5 — payment (active)</p>
+          <div class="amelia-widget amelia-dim">
+            <div class="amelia-sidebar">
+              <div class="amelia-sidebar-title">Book a pottery experience<span>Sat 13 Jun · 11:30 am</span></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Service</span><span class="amelia-step-value">Studio Experience</span></div></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Guests</span><span class="amelia-step-value">2 people</span></div></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Date &amp; time</span><span class="amelia-step-value">Sat 13 Jun, 11:30 am</span></div></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Your details</span><span class="amelia-step-value">Jane Smith</span></div></div>
+              <div class="amelia-step is-active"><div class="amelia-step-dot">5</div><div class="amelia-step-text"><span class="amelia-step-label">Payment</span><span class="amelia-step-value">Choose method</span></div></div>
+            </div>
+            <div class="amelia-content">
+              <h3>Payment</h3>
+              <p class="amelia-sub">Review your booking and choose a payment method.</p>
+              <div class="amelia-pay-summary">
+                <div class="amelia-pay-row"><span>Studio Pottery Experience × 2</span><span>$138.00</span></div>
+                <div class="amelia-pay-row total"><span>Total</span><span>$138.00</span></div>
+              </div>
+              <div class="amelia-coupon-row">
+                <div class="amelia-coupon-input"></div>
+                <button class="amelia-coupon-btn">Apply coupon</button>
+              </div>
+              <div class="amelia-pay-methods">
+                <div class="amelia-pay-method is-selected">
+                  <div class="amelia-pay-radio"><div class="amelia-pay-radio-inner"></div></div>
+                  <div><div class="amelia-pay-method-label">Pay by card</div><div class="amelia-pay-method-sub">Secure payment via Stripe</div></div>
+                  <span class="amelia-stripe-badge">Stripe</span>
+                </div>
+                <div class="amelia-pay-method">
+                  <div class="amelia-pay-radio"></div>
+                  <div><div class="amelia-pay-method-label">Pay on arrival</div><div class="amelia-pay-method-sub">Payment collected at the studio</div></div>
+                </div>
+              </div>
+              <div class="amelia-act">
+                <button class="amelia-btn-back">← Back</button>
+                <button class="amelia-btn-next">Confirm booking →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirmation -->
+          <p class="amelia-step-note">Confirmation screen (after successful booking)</p>
+          <div class="amelia-widget amelia-dim">
+            <div class="amelia-sidebar">
+              <div class="amelia-sidebar-title">Book a pottery experience<span>Booking confirmed</span></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Service</span><span class="amelia-step-value">Studio Experience</span></div></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Guests</span><span class="amelia-step-value">2 people</span></div></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Date &amp; time</span><span class="amelia-step-value">Sat 13 Jun, 11:30 am</span></div></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Your details</span><span class="amelia-step-value">Jane Smith</span></div></div>
+              <div class="amelia-step is-done"><div class="amelia-step-dot">✓</div><div class="amelia-step-text"><span class="amelia-step-label">Payment</span><span class="amelia-step-value">$138.00 — Stripe</span></div></div>
+            </div>
+            <div class="amelia-content">
+              <div class="amelia-confirm-wrap">
+                <div class="amelia-confirm-icon">✓</div>
+                <div class="amelia-confirm-title">You're booked!</div>
+                <div class="amelia-confirm-sub">A confirmation has been sent to jane@email.com</div>
+              </div>
+              <div class="amelia-confirm-details">
+                <div class="amelia-confirm-row"><span class="lbl">Booking ID</span><span class="val">#HP-00142</span></div>
+                <div class="amelia-confirm-row"><span class="lbl">Service</span><span class="val">Studio Pottery Experience</span></div>
+                <div class="amelia-confirm-row"><span class="lbl">Date</span><span class="val">Saturday, 13 June 2026</span></div>
+                <div class="amelia-confirm-row"><span class="lbl">Time</span><span class="val">11:30 am – 1:00 pm</span></div>
+                <div class="amelia-confirm-row"><span class="lbl">Location</span><span class="val">749 Caves Road, Anniebrook</span></div>
+                <div class="amelia-confirm-row"><span class="lbl">Guests</span><span class="val">2 people</span></div>
+                <div class="amelia-confirm-row"><span class="lbl">Paid</span><span class="val">$138.00 via Stripe</span></div>
+              </div>
+              <div class="amelia-cal-add">
+                <p>Add to your calendar</p>
+                <div class="amelia-cal-btns">
+                  <button class="amelia-cal-btn">Google Calendar</button>
+                  <button class="amelia-cal-btn">Outlook</button>
+                  <button class="amelia-cal-btn">Apple Calendar</button>
+                  <button class="amelia-cal-btn">Yahoo</button>
+                </div>
+              </div>
+              <button class="amelia-btn-finish">Finish</button>
+            </div>
+          </div>
+
+          <!-- Event list -->
+          <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 32px 0 24px;">
+          <p class="amelia-step-note" style="margin-bottom: 16px;">Widget style 2 — event list with book buttons</p>
+          <div class="amelia-ev-card">
+            <div class="amelia-ev-hd">
+              <h3>Upcoming pottery experiences</h3>
+              <p>Happs Pottery · 749 Caves Road, Anniebrook</p>
+            </div>
+            <div class="amelia-ev-list">
+              <div class="amelia-ev">
+                <div class="amelia-ev-dt"><div class="amelia-ev-day">14</div><div class="amelia-ev-mon">Jun</div></div>
+                <div><div class="amelia-ev-title">Studio Pottery Experience</div><div class="amelia-ev-meta"><span>10:00 am · 1.5 hrs</span><span>6 spots left</span><span class="amelia-badge available">Available</span></div></div>
+                <div class="amelia-ev-r"><span class="amelia-ev-price">$69 / person</span><button class="amelia-btn-book">Book now</button></div>
+              </div>
+              <div class="amelia-ev">
+                <div class="amelia-ev-dt"><div class="amelia-ev-day">14</div><div class="amelia-ev-mon">Jun</div></div>
+                <div><div class="amelia-ev-title">Studio Pottery Experience</div><div class="amelia-ev-meta"><span>2:00 pm · 1.5 hrs</span><span>2 spots left</span><span class="amelia-badge limited">Almost full</span></div></div>
+                <div class="amelia-ev-r"><span class="amelia-ev-price">$69 / person</span><button class="amelia-btn-book">Book now</button></div>
+              </div>
+              <div class="amelia-ev">
+                <div class="amelia-ev-dt"><div class="amelia-ev-day">28</div><div class="amelia-ev-mon">Jun</div></div>
+                <div><div class="amelia-ev-title">Studio Pottery Experience</div><div class="amelia-ev-meta"><span>11:00 am · 1.5 hrs</span><span>Fully booked</span><span class="amelia-badge sold-out">Sold out</span></div></div>
+                <div class="amelia-ev-r"><span class="amelia-ev-price">$69 / person</span><button class="amelia-btn-book sold-out">Sold out</button></div>
+              </div>
+              <div class="amelia-ev">
+                <div class="amelia-ev-dt"><div class="amelia-ev-day">5</div><div class="amelia-ev-mon">Jul</div></div>
+                <div><div class="amelia-ev-title">Studio Pottery Experience</div><div class="amelia-ev-meta"><span>10:00 am · 1.5 hrs</span><span>8 spots left</span><span class="amelia-badge available">Available</span></div></div>
+                <div class="amelia-ev-r"><span class="amelia-ev-price">$69 / person</span><button class="amelia-btn-book">Book now</button></div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /right col -->
+
+      </div><!-- /.book-layout -->
+    </div><!-- /.page-width -->
+  </div>
+
   <script src="../navigation.js"></script>
   <script src="../comments.js"></script>
 </body>

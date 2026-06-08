@@ -158,7 +158,8 @@ Avoid AI-flavoured phrasing. No em dashes used for rhetorical effect. Short sent
 - **Open Studios:** Seasonal event — MRROS (Margaret River Region Open Studios), September only. Demo sessions $10/person, led by Myles. Content about this lives only in the landing page, blog, and temporary promo popups — not in standard site pages.
 - **Key segments:** General visitors, school groups, corporate gifting
 - **CRM:** GoHighLevel — enquiry forms feed into GHL
-- **Booking:** TryBooking or Eventbrite (decision outstanding)
+- **Booking — experiences:** Amelia WordPress plugin (handles the Studio Pottery Experience and all year-round bookings)
+- **Booking — Open Studios:** TryBooking or Eventbrite (decision outstanding — this event only)
 
 ---
 
