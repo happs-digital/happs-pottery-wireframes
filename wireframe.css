@@ -905,7 +905,6 @@ footer.wf-footer {
   .book-layout { grid-template-columns: 1fr; }
   .cal-inner { grid-template-columns: 1fr; }
   .cal-slot-panel { margin-top: 12px; }
-}
   .wf-grid-2,
   .wf-grid-3 { grid-template-columns: 1fr; }
   .wf-grid-4 { grid-template-columns: 1fr 1fr; }
