@@ -716,9 +716,9 @@ footer.wf-footer {
 
 .amelia-step { display: flex; align-items: flex-start; gap: 12px; padding: 10px 20px; position: relative; }
 .amelia-step.is-active { background: rgba(255,255,255,.06); }
-.amelia-step.is-active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #aaa; border-radius: 0 2px 2px 0; }
+.amelia-step.is-active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: rgb(0,89,221); border-radius: 0 2px 2px 0; }
 .amelia-step-dot { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 1px; }
-.amelia-step.is-done .amelia-step-dot { background: #666; color: #fff; }
+.amelia-step.is-done .amelia-step-dot { background: rgb(0,89,221); color: #fff; }
 .amelia-step.is-active .amelia-step-dot { background: #fff; color: #2b2b28; }
 .amelia-step.is-inactive .amelia-step-dot { background: #3a3a36; color: #666; }
 .amelia-step-text { display: flex; flex-direction: column; gap: 2px; }
@@ -739,7 +739,7 @@ footer.wf-footer {
 .amelia-req { color: #888; }
 
 .amelia-dropdown { width: 100%; height: 42px; border: 1px solid #d8d8d8; border-radius: 8px; background: #fafaf9; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; margin-bottom: 12px; }
-.amelia-dropdown.is-open { border: 1px solid #888; border-radius: 8px 8px 0 0; background: #fff; }
+.amelia-dropdown.is-open { border: 1px solid rgb(0,89,221); border-radius: 8px 8px 0 0; background: #fff; }
 .amelia-dropdown-val { font-size: 13px; color: #1a1a18; font-weight: 500; }
 .amelia-dropdown-ph { font-size: 13px; color: #bbb; }
 .amelia-dropdown-arrow { font-size: 11px; color: #bbb; }
@@ -765,7 +765,7 @@ footer.wf-footer {
 .amelia-d { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 11px; border-radius: 50%; color: #888; }
 .amelia-d.hd { font-size: 10px; font-weight: 600; color: #bbb; }
 .amelia-d.avail { color: #555; }
-.amelia-d.sel { background: #333; color: #fff; font-weight: 600; }
+.amelia-d.sel { background: rgb(0,89,221); color: #fff; font-weight: 600; }
 .amelia-d.today { font-weight: 700; color: #222; }
 .amelia-d.dim { opacity: .25; }
 .amelia-d.dot::after { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: #888; margin: 0 auto; margin-top: -2px; }
@@ -773,7 +773,7 @@ footer.wf-footer {
 .amelia-slots-hd { font-size: 12px; font-weight: 600; color: #1a1a18; margin-bottom: 10px; }
 .amelia-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .amelia-slot { padding: 9px 6px; text-align: center; font-size: 12px; border: 1px solid #d8d8d8; border-radius: 7px; color: #555; background: #fff; }
-.amelia-slot.sel { border: 2px solid #555; color: #111; font-weight: 600; background: #f0f0f0; }
+.amelia-slot.sel { border: 2px solid rgb(0,89,221); color: rgb(0,89,221); font-weight: 600; background: #eef3ff; }
 .amelia-slot.dim { opacity: .3; text-decoration: line-through; }
 
 .amelia-fld-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
@@ -790,13 +790,13 @@ footer.wf-footer {
 .amelia-coupon-btn { height: 38px; padding: 0 16px; border: 1px solid #d8d8d8; border-radius: 7px; background: #fff; font-size: 12px; color: #888; white-space: nowrap; }
 .amelia-pay-methods { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
 .amelia-pay-method { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid #d8d8d8; border-radius: 8px; }
-.amelia-pay-method.is-selected { border: 2px solid #555; background: #f5f5f5; }
+.amelia-pay-method.is-selected { border: 2px solid rgb(0,89,221); background: #eef3ff; }
 .amelia-pay-radio { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #ccc; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-.amelia-pay-method.is-selected .amelia-pay-radio { border-color: #555; }
-.amelia-pay-radio-inner { width: 8px; height: 8px; border-radius: 50%; background: #555; }
+.amelia-pay-method.is-selected .amelia-pay-radio { border-color: rgb(0,89,221); }
+.amelia-pay-radio-inner { width: 8px; height: 8px; border-radius: 50%; background: rgb(0,89,221); }
 .amelia-pay-method-label { font-size: 13px; font-weight: 500; color: #1a1a18; }
 .amelia-pay-method-sub { font-size: 11px; color: #888; margin-top: 1px; }
-.amelia-stripe-badge { font-size: 10px; padding: 2px 8px; border-radius: 4px; background: #555; color: #fff; font-weight: 600; margin-left: auto; }
+.amelia-stripe-badge { font-size: 10px; padding: 2px 8px; border-radius: 4px; background: rgb(0,89,221); color: #fff; font-weight: 600; margin-left: auto; }
 
 .amelia-confirm-wrap { text-align: center; padding: 16px 0 8px; }
 .amelia-confirm-icon { width: 56px; height: 56px; border-radius: 50%; background: #efefef; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 26px; }
@@ -811,11 +811,11 @@ footer.wf-footer {
 .amelia-cal-add p { font-size: 11px; color: #888; margin-bottom: 8px; }
 .amelia-cal-btns { display: flex; gap: 7px; flex-wrap: wrap; }
 .amelia-cal-btn { font-size: 11px; padding: 5px 10px; border: 1px solid #d8d8d8; border-radius: 6px; background: #fff; color: #555; }
-.amelia-btn-finish { width: 100%; height: 42px; background: #2b2b28; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; }
+.amelia-btn-finish { width: 100%; height: 42px; background: rgb(0,89,221); color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; }
 
 .amelia-act { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; border-top: 1px solid #eee; margin-top: 16px; }
 .amelia-btn-back { font-size: 12px; color: #888; background: none; border: 1px solid #d8d8d8; border-radius: 7px; padding: 9px 16px; }
-.amelia-btn-next { font-size: 13px; font-weight: 600; background: #2b2b28; color: #fff; border: none; border-radius: 7px; padding: 9px 20px; }
+.amelia-btn-next { font-size: 13px; font-weight: 600; background: rgb(0,89,221); color: #fff; border: none; border-radius: 7px; padding: 9px 20px; }
 .amelia-contact-link { font-size: 11px; color: #aaa; margin-top: 16px; }
 .amelia-contact-link a { color: #666; text-decoration: none; }
 
@@ -840,7 +840,7 @@ footer.wf-footer {
 .amelia-badge.sold-out { background: #d8d8d8; color: #999; }
 .amelia-ev-r { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
 .amelia-ev-price { font-size: 12px; font-weight: 600; color: #1a1a18; }
-.amelia-btn-book { font-size: 11px; font-weight: 600; background: #2b2b28; color: #fff; border: none; border-radius: 7px; padding: 7px 13px; white-space: nowrap; }
+.amelia-btn-book { font-size: 11px; font-weight: 600; background: rgb(0,89,221); color: #fff; border: none; border-radius: 7px; padding: 7px 13px; white-space: nowrap; }
 .amelia-btn-book.sold-out { background: #efefef; color: #bbb; }
 
 /* ── Book page two-column layout ── */
@@ -860,7 +860,7 @@ footer.wf-footer {
 .cal-month-nav-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid #d8d8d8; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #888; cursor: pointer; }
 .cal-month-label { font-size: 14px; font-weight: 600; color: #1a1a18; }
 
-.cal-inner { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
+.cal-inner { display: grid; grid-template-columns: minmax(50%, 1fr) 1fr; gap: 16px; align-items: start; }
 .cal-grid-wrap { min-width: 200px; }
 .cal-days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
 .cal-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 11px; border-radius: 50%; position: relative; }
@@ -868,18 +868,18 @@ footer.wf-footer {
 .cal-cell.inactive { color: #ccc; }
 .cal-cell.today { font-weight: 700; color: #333; }
 
-/* Availability circle states — greyscale representations of green/yellow/red in production */
-.cal-cell.avail { border: 2px solid #aaa; color: #333; font-weight: 500; cursor: pointer; }
-.cal-cell.limited { border: 2px solid #888; background: #e0e0e0; color: #333; font-weight: 500; cursor: pointer; }
-.cal-cell.full { border: 2px solid #555; background: #555; color: #fff; font-weight: 500; cursor: default; }
-.cal-cell.selected { border: 2px solid #1a1a18; background: #1a1a18; color: #fff; font-weight: 600; }
+/* Availability circle states — colour exception approved for booking widget */
+.cal-cell.avail { background: #dcfce7; color: #166534; font-weight: 500; cursor: pointer; }
+.cal-cell.limited { background: #fef9c3; color: #854d0e; font-weight: 500; cursor: pointer; }
+.cal-cell.full { background: #fee2e2; color: #991b1b; font-weight: 500; cursor: default; }
+.cal-cell.selected { background: #1a1a18; color: #fff; font-weight: 600; }
 
 .cal-legend { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; padding-top: 14px; border-top: 1px solid #eee; }
 .cal-legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #666; }
 .cal-legend-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
-.cal-legend-dot.avail { border: 2px solid #aaa; }
-.cal-legend-dot.limited { border: 2px solid #888; background: #e0e0e0; }
-.cal-legend-dot.full { border: 2px solid #555; background: #555; }
+.cal-legend-dot.avail { background: #dcfce7; }
+.cal-legend-dot.limited { background: #fef9c3; }
+.cal-legend-dot.full { background: #fee2e2; }
 .cal-legend-colour { font-size: 10px; color: #bbb; margin-left: 2px; }
 
 /* Slot panel — appears to the right of the calendar grid when a date is selected */

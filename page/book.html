@@ -46,7 +46,7 @@
                 <!-- Calendar grid -->
                 <div class="cal-grid-wrap">
                   <div class="cal-days-grid">
-                    <!-- Day headers -->
+                    <!-- Day headers — classes run Fri Sat Sun Mon -->
                     <div class="cal-cell hd">Mo</div>
                     <div class="cal-cell hd">Tu</div>
                     <div class="cal-cell hd">We</div>
@@ -54,40 +54,40 @@
                     <div class="cal-cell hd">Fr</div>
                     <div class="cal-cell hd">Sa</div>
                     <div class="cal-cell hd">Su</div>
-                    <!-- Week 1 -->
+                    <!-- Week 1: 1 Jun = Mon. All past (today = 8 Jun) -->
                     <div class="cal-cell inactive">1</div>
                     <div class="cal-cell inactive">2</div>
                     <div class="cal-cell inactive">3</div>
-                    <div class="cal-cell today">4</div>
+                    <div class="cal-cell inactive">4</div>
                     <div class="cal-cell inactive">5</div>
-                    <div class="cal-cell avail">6</div>
-                    <div class="cal-cell avail">7</div>
-                    <!-- Week 2 -->
-                    <div class="cal-cell inactive">8</div>
+                    <div class="cal-cell inactive">6</div>
+                    <div class="cal-cell inactive">7</div>
+                    <!-- Week 2: 8=Mon(today), 9=Tue, 10=Wed, 11=Thu, 12=Fri, 13=Sat(selected), 14=Sun -->
+                    <div class="cal-cell today">8</div>
                     <div class="cal-cell inactive">9</div>
                     <div class="cal-cell inactive">10</div>
                     <div class="cal-cell inactive">11</div>
-                    <div class="cal-cell inactive">12</div>
+                    <div class="cal-cell avail">12</div>
                     <div class="cal-cell selected">13</div>
                     <div class="cal-cell limited">14</div>
-                    <!-- Week 3 -->
-                    <div class="cal-cell inactive">15</div>
+                    <!-- Week 3: 15=Mon, 16=Tue, 17=Wed, 18=Thu, 19=Fri, 20=Sat, 21=Sun -->
+                    <div class="cal-cell avail">15</div>
                     <div class="cal-cell inactive">16</div>
                     <div class="cal-cell inactive">17</div>
                     <div class="cal-cell inactive">18</div>
-                    <div class="cal-cell inactive">19</div>
-                    <div class="cal-cell avail">20</div>
+                    <div class="cal-cell avail">19</div>
+                    <div class="cal-cell full">20</div>
                     <div class="cal-cell avail">21</div>
-                    <!-- Week 4 -->
-                    <div class="cal-cell inactive">22</div>
+                    <!-- Week 4: 22=Mon, 23=Tue, 24=Wed, 25=Thu, 26=Fri, 27=Sat, 28=Sun -->
+                    <div class="cal-cell limited">22</div>
                     <div class="cal-cell inactive">23</div>
                     <div class="cal-cell inactive">24</div>
                     <div class="cal-cell inactive">25</div>
-                    <div class="cal-cell inactive">26</div>
-                    <div class="cal-cell full">27</div>
+                    <div class="cal-cell avail">26</div>
+                    <div class="cal-cell avail">27</div>
                     <div class="cal-cell avail">28</div>
-                    <!-- Week 5 -->
-                    <div class="cal-cell inactive">29</div>
+                    <!-- Week 5: 29=Mon, 30=Tue -->
+                    <div class="cal-cell avail">29</div>
                     <div class="cal-cell inactive">30</div>
                   </div>
 
@@ -95,15 +95,15 @@
                   <div class="cal-legend">
                     <div class="cal-legend-item">
                       <div class="cal-legend-dot avail"></div>
-                      <span>Available <span class="cal-legend-colour">(green)</span></span>
+                      <span>Available</span>
                     </div>
                     <div class="cal-legend-item">
                       <div class="cal-legend-dot limited"></div>
-                      <span>Limited spots <span class="cal-legend-colour">(yellow)</span></span>
+                      <span>Limited spots</span>
                     </div>
                     <div class="cal-legend-item">
                       <div class="cal-legend-dot full"></div>
-                      <span>Fully booked <span class="cal-legend-colour">(red)</span></span>
+                      <span>Fully booked</span>
                     </div>
                   </div>
                 </div>
