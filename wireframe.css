@@ -1,6 +1,8 @@
 /* Happs Pottery Wireframe Prototype — wireframe.css */
 /* Strict greyscale only — no colour anywhere */
 
+@import url('print.css') print;
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {

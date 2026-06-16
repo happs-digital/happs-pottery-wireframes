@@ -1,0 +1,260 @@
+/* Happs Pottery Wireframes — print.css */
+/* Loaded via @import in wireframe.css — applies to @media print only */
+
+/* ── Page ── */
+@page {
+  size: A4 portrait;
+  margin: 15mm 12mm;
+}
+
+/* ── Hide non-content chrome ── */
+#wf-toolbar,
+.wf-book-tab,
+.wf-promo,
+.wf-promo-reopen,
+.wf-chat-btn,
+.wf-chat-panel,
+#wf-search-overlay {
+  display: none !important;
+}
+
+/* ── Remove toolbar offset injected by comments.js ── */
+#wf-page.wrapper {
+  margin-top: 0 !important;
+  min-height: unset !important;
+}
+
+/* ── Nav — compact single-line strip ── */
+header.wf-header {
+  position: static !important;
+  border-bottom: 1px solid #ccc;
+}
+
+nav.wf-nav {
+  display: flex !important;
+  align-items: center !important;
+  height: auto !important;
+  min-height: unset !important;
+  padding: 5px 0 !important;
+  gap: 0 !important;
+}
+
+.wf-nav-brand {
+  font-size: 12px !important;
+  margin-right: 10px;
+}
+
+.wf-nav-links {
+  flex: 1 !important;
+  justify-content: flex-start !important;
+}
+
+.wf-nav-links a {
+  font-size: 11px !important;
+  padding: 0 8px !important;
+}
+
+.wf-nav-links a.active span {
+  border-bottom-width: 1px !important;
+}
+
+.wf-nav-actions {
+  display: none !important;
+}
+
+/* ── Footer — address strip + copyright ── */
+footer.wf-footer {
+  background: none !important;
+  border-top: 1px solid #ccc;
+}
+
+.wf-footer-inner {
+  padding: 5px 0 4px !important;
+}
+
+/* Collapse grid to block, keep only the address column */
+.wf-footer-grid {
+  display: block !important;
+}
+
+.wf-footer-grid > div:not(:first-child) {
+  display: none !important;
+}
+
+.wf-footer-grid > div:first-child h4 {
+  display: inline !important;
+  font-size: 10px !important;
+  margin: 0 4px 0 0 !important;
+}
+
+.wf-footer-grid > div:first-child ul {
+  display: inline !important;
+  list-style: none !important;
+  padding: 0 !important;
+}
+
+.wf-footer-grid > div:first-child ul li {
+  display: inline !important;
+  font-size: 10px !important;
+  color: #555 !important;
+  margin: 0 !important;
+}
+
+.wf-footer-grid > div:first-child ul li:not(:last-child)::after {
+  content: ' · ';
+  color: #bbb;
+}
+
+.wf-footer-social,
+.wf-footer-acknowledgement {
+  display: none !important;
+}
+
+.wf-footer-note {
+  font-size: 10px !important;
+  color: #999 !important;
+  margin-top: 2px !important;
+}
+
+/* ── Typography — condensed for print ── */
+body {
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+
+h1 { font-size: 22px !important; margin-bottom: 0.5rem !important; }
+h2 { font-size: 17px !important; margin-bottom: 0.5rem !important; }
+h3 { font-size: 13px !important; margin-bottom: 0.3rem !important; }
+p, li { font-size: 13px !important; }
+
+/* Suppress browser-default link URL printing */
+a[href]::after {
+  content: '' !important;
+}
+
+/* ── Sections — condensed spacing, no page splits ── */
+.wf-section {
+  padding: 16px 0 !important;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+main > .wf-section:first-of-type {
+  padding-top: 10px !important;
+}
+
+/* ── Component containers — keep together on the page ── */
+.wf-card,
+.wf-box,
+.wf-outline,
+.wf-outline-section,
+.amelia-widget,
+.amelia-ev-card,
+.cal-widget,
+.book-layout {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* ── 4-col grids — 2 cols at print width ── */
+.wf-grid-4 {
+  grid-template-columns: 1fr 1fr !important;
+}
+
+/* ── Images — smaller placeholder ── */
+.wf-image {
+  min-height: 60px !important;
+  font-size: 11px !important;
+}
+
+/* ── Buttons — tighter for print ── */
+.wf-btn,
+.wf-btn-outline {
+  padding: 4px 14px !important;
+  font-size: 12px !important;
+  margin-top: 0.35rem !important;
+}
+
+.wf-placeholder {
+  font-size: 11px !important;
+  padding: 0.5rem !important;
+}
+
+/* ────────────────────────────────────────────────
+   Content Outline blocks
+   Printed beneath page content with distinct
+   styling so they read as planning annotations,
+   not live wireframe copy:
+     - darker grey backgrounds (force-printed)
+     - italic body text
+     - smaller type
+     - tighter padding
+──────────────────────────────────────────────── */
+
+.wf-outline {
+  background: #e8e8e8 !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  border: 1.5px dashed #777 !important;
+  padding: 10px 12px 12px !important;
+  margin: 0 0 14px !important;
+}
+
+.wf-outline::before {
+  background: #e8e8e8 !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  font-size: 9px !important;
+  letter-spacing: 0.14em !important;
+  color: #666 !important;
+  top: -8px !important;
+}
+
+.wf-outline-section {
+  background: #dadada !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  padding: 6px 8px !important;
+  margin-bottom: 5px !important;
+}
+
+.wf-outline-label {
+  font-size: 9px !important;
+  letter-spacing: 0.12em !important;
+  margin-bottom: 3px !important;
+}
+
+.wf-outline-label::before {
+  display: none !important;
+}
+
+.wf-outline p,
+.wf-outline li {
+  font-style: italic !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  color: #444 !important;
+}
+
+.wf-outline-tag {
+  background: #cccccc !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  font-size: 9px !important;
+}
+
+/* ── Amelia sidebar — force dark bg to print ── */
+.amelia-sidebar {
+  background: #2b2b28 !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── Calendar availability states — force colours to print ── */
+.cal-cell.avail,
+.cal-cell.limited,
+.cal-cell.full,
+.cal-cell.selected {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
